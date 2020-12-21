@@ -502,21 +502,25 @@ Table of Contents
 
                           Table 1: Common Options
 
-   opt_endofopt:  The opt_endofopt option delimits the end of the
-      optional fields.  This option MUST NOT be repeated within a given
-      list of options.
+   opt_endofopt:
+           The opt_endofopt option delimits the end of the optional
+           fields.  This option MUST NOT be repeated within a given list
+           of options.
 
-   opt_comment:  The opt_comment option is a UTF-8 string containing
-      human-readable comment text that is associated to the current
-      block.  Line separators SHOULD be a carriage-return + linefeed
-      ('\r\n') or just linefeed ('\n'); either form may appear and be
-      considered a line separator.  The string is not zero-terminated.
+   opt_comment:
+           The opt_comment option is a UTF-8 string containing human-
+           readable comment text that is associated to the current
+           block.  Line separators SHOULD be a carriage-return +
+           linefeed ('\r\n') or just linefeed ('\n'); either form may
+           appear and be considered a line separator.  The string is not
+           zero-terminated.
 
    Examples: "This packet is the beginning of all of our problems",
    "Packets 17-23 showing a bogus TCP retransmission!\r\n This is
    reported in bugzilla entry 1486.\nIt will be fixed in the future.".
 
-   opt_custom:  This option is described in detail in Section 3.5.1.
+   opt_custom:
+           This option is described in detail in Section 3.5.1.
 
 3.5.1.  Custom Options
 
@@ -547,33 +551,34 @@ Table of Contents
    *  Custom Option Code: The code number for the Custom Option, which
       can be one of the following decimal numbers:
 
-      2988:
-         This option code identifies a Custom Option containing a UTF-8
-         string in the Custom Data portion.  The string is not zero-
-         terminated.  This Custom Option can be safely copied to a new
-         file if the pcapng file is manipulated by an application;
-         otherwise 19372 should be used instead.  See Section 6.2 for
-         details.
+      2988:  
+              This option code identifies a Custom Option containing a
+              UTF-8 string in the Custom Data portion.  The string is
+              not zero-terminated.  This Custom Option can be safely
+              copied to a new file if the pcapng file is manipulated by
+              an application; otherwise 19372 should be used instead.
+              See Section 6.2 for details.
 
-      2989:
-         This option code identifies a Custom Option containing binary
-         octets in the Custom Data portion.  This Custom Option can be
-         safely copied to a new file if the pcapng file is manipulated
-         by an application; otherwise 19372 should be used instead.  See
-         Section 6.2 for details.
+      2989:  
+              This option code identifies a Custom Option containing
+              binary octets in the Custom Data portion.  This Custom
+              Option can be safely copied to a new file if the pcapng
+              file is manipulated by an application; otherwise 19372
+              should be used instead.  See Section 6.2 for details.
 
-      19372:
-         This option code identifies a Custom Option containing a UTF-8
-         string in the Custom Data portion.  The string is not zero-
-         terminated.  This Custom Option should not be copied to a new
-         file if the pcapng file is manipulated by an application.  See
-         Section 6.2 for details.
+      19372: 
+              This option code identifies a Custom Option containing a
+              UTF-8 string in the Custom Data portion.  The string is
+              not zero-terminated.  This Custom Option should not be
+              copied to a new file if the pcapng file is manipulated by
+              an application.  See Section 6.2 for details.
 
-      19373:
-         This option code identifies a Custom Option containing binary
-         octets in the Custom Data portion.  This Custom Option should
-         not be copied to a new file if the pcapng file is manipulated
-         by an application.  See Section 6.2 for details.
+      19373: 
+              This option code identifies a Custom Option containing
+              binary octets in the Custom Data portion.  This Custom
+              Option should not be copied to a new file if the pcapng
+              file is manipulated by an application.  See Section 6.2
+              for details.
 
    *  Option Length: as described in Section 3.1, this contains the
       length of the option's value, which includes the 4-octet Private
@@ -747,23 +752,23 @@ Table of Contents
                   Table 2: Section Header Block Options
 
    shb_hardware:
-      The shb_hardware option is a UTF-8 string containing the
-      description of the hardware used to create this section.  The
-      string is not zero-terminated.
+           The shb_hardware option is a UTF-8 string containing the
+           description of the hardware used to create this section.  The
+           string is not zero-terminated.
 
    Examples: "x86 Personal Computer", "Sun Sparc Workstation".
 
    shb_os:
-      The shb_os option is a UTF-8 string containing the name of the
-      operating system used to create this section.  The string is not
-      zero-terminated.
+           The shb_os option is a UTF-8 string containing the name of
+           the operating system used to create this section.  The string
+           is not zero-terminated.
 
    Examples: "Windows XP SP2", "openSUSE 10.2".
 
    shb_userappl:
-      The shb_userappl option is a UTF-8 string containing the name of
-      the application used to create this section.  The string is not
-      zero-terminated.
+           The shb_userappl option is a UTF-8 string containing the name
+           of the application used to create this section.  The string
+           is not zero-terminated.
 
    Examples: "dumpcap V0.99.7".
 
@@ -885,141 +890,145 @@ Table of Contents
                 Table 3: Interface Description Block Options
 
    if_name:
-      The if_name option is a UTF-8 string containing the name of the
-      device used to capture data.  The string is not zero-terminated.
+           The if_name option is a UTF-8 string containing the name of
+           the device used to capture data.  The string is not zero-
+           terminated.
 
    Examples: "eth0",
    "\Device\NPF_{AD1CE675-96D0-47C5-ADD0-2504B9126B68}".
 
    if_description:
-      The if_description option is a UTF-8 string containing the
-      description of the device used to capture data.  The string is not
-      zero-terminated.
+           The if_description option is a UTF-8 string containing the
+           description of the device used to capture data.  The string
+           is not zero-terminated.
 
    Examples: "Wi-Fi", "Local Area Connection", "Wireless Network
    Connection", "First Ethernet Interface".
 
    if_IPv4addr:
-      The if_IPv4addr option is an IPv4 network address and
-      corresponding netmask for the interface.  The first four octets
-      are the IP address, and the next four octets are the netmask.
-      This option can be repeated multiple times within the same
-      Interface Description Block when multiple IPv4 addresses are
-      assigned to the interface.  Note that the IP address and netmask
-      are both treated as four octets, one for each octet of the address
-      or mask; they are not 32-bit numbers, and thus the endianness of
-      the SHB does not affect this field's value.
+           The if_IPv4addr option is an IPv4 network address and
+           corresponding netmask for the interface.  The first four
+           octets are the IP address, and the next four octets are the
+           netmask.  This option can be repeated multiple times within
+           the same Interface Description Block when multiple IPv4
+           addresses are assigned to the interface.  Note that the IP
+           address and netmask are both treated as four octets, one for
+           each octet of the address or mask; they are not 32-bit
+           numbers, and thus the endianness of the SHB does not affect
+           this field's value.
 
    Examples: '192 168 1 1 255 255 255 0'.
 
    if_IPv6addr:
-      The if_IPv6addr option is an IPv6 network address and
-      corresponding prefix length for the interface.  The first 16
-      octets are the IP address and the next octet is the prefix length.
-      This option can be repeated multiple times within the same
-      Interface Description Block when multiple IPv6 addresses are
-      assigned to the interface.
+           The if_IPv6addr option is an IPv6 network address and
+           corresponding prefix length for the interface.  The first 16
+           octets are the IP address and the next octet is the prefix
+           length.  This option can be repeated multiple times within
+           the same Interface Description Block when multiple IPv6
+           addresses are assigned to the interface.
 
    Example: 2001:0db8:85a3:08d3:1319:8a2e:0370:7344/64 is written (in
    hex) as '20 01 0d b8 85 a3 08 d3 13 19 8a 2e 03 70 73 44 40'.
 
    if_MACaddr:
-      The if_MACaddr option is the Interface Hardware MAC address (48
-      bits), if available.
+           The if_MACaddr option is the Interface Hardware MAC address
+           (48 bits), if available.
 
    Example: '00 01 02 03 04 05'.
 
    if_EUIaddr:
-      The if_EUIaddr option is the Interface Hardware EUI address (64
-      bits), if available.
+           The if_EUIaddr option is the Interface Hardware EUI address
+           (64 bits), if available.
 
    Example: '02 34 56 FF FE 78 9A BC'.
 
    if_speed:
-      The if_speed option is a 64-bit unsigned value indicating the
-      interface speed, in bits per second.
+           The if_speed option is a 64-bit unsigned value indicating the
+           interface speed, in bits per second.
 
    Example: the 64-bit decimal number 100000000 for 100Mbps.
 
    if_tsresol:
-      The if_tsresol option identifies the resolution of timestamps.  If
-      the Most Significant Bit is equal to zero, the remaining bits
-      indicates the resolution of the timestamp as a negative power of
-      10 (e.g. 6 means microsecond resolution, timestamps are the number
-      of microseconds since 1970-01-01 00:00:00 UTC).  If the Most
-      Significant Bit is equal to one, the remaining bits indicates the
-      resolution as negative power of 2 (e.g. 10 means 1/1024 of
-      second).  If this option is not present, a resolution of 10^-6 is
-      assumed (i.e. timestamps have the same resolution of the standard
-      'libpcap' timestamps).
+           The if_tsresol option identifies the resolution of
+           timestamps.  If the Most Significant Bit is equal to zero,
+           the remaining bits indicates the resolution of the timestamp
+           as a negative power of 10 (e.g. 6 means microsecond
+           resolution, timestamps are the number of microseconds since
+           1970-01-01 00:00:00 UTC).  If the Most Significant Bit is
+           equal to one, the remaining bits indicates the resolution as
+           negative power of 2 (e.g. 10 means 1/1024 of second).  If
+           this option is not present, a resolution of 10^-6 is assumed
+           (i.e. timestamps have the same resolution of the standard
+           'libpcap' timestamps).
 
    Example: '6'.
 
    if_tzone:
-      The if_tzone option identifies the time zone for GMT support
-      (TODO: specify better).
+           The if_tzone option identifies the time zone for GMT support
+           (TODO: specify better).
 
    Example: TODO: give a good example.
 
    if_filter:
-      The if_filter option identifies the filter (e.g. "capture only TCP
-      traffic") used to capture traffic.  The first octet of the Option
-      Data keeps a code of the filter used (e.g. if this is a libpcap
-      string, or BPF bytecode, and more).  More details about this
-      format will be presented in Appendix XXX (TODO).  (TODO: better
-      use different options for different fields? e.g. if_filter_pcap,
-      if_filter_bpf, ...)
+           The if_filter option identifies the filter (e.g. "capture
+           only TCP traffic") used to capture traffic.  The first octet
+           of the Option Data keeps a code of the filter used (e.g. if
+           this is a libpcap string, or BPF bytecode, and more).  More
+           details about this format will be presented in Appendix XXX
+           (TODO).  (TODO: better use different options for different
+           fields? e.g. if_filter_pcap, if_filter_bpf, ...)
 
    Example: '00'"tcp port 23 and host 192.0.2.5".
 
-   if_os:
-      The if_os option is a UTF-8 string containing the name of the
-      operating system of the machine in which this interface is
-      installed.  This can be different from the same information that
-      can be contained by the Section Header Block (Section 4.1) because
-      the capture can have been done on a remote machine.  The string is
-      not zero-terminated.
+   if_os: 
+           The if_os option is a UTF-8 string containing the name of the
+           operating system of the machine in which this interface is
+           installed.  This can be different from the same information
+           that can be contained by the Section Header Block
+           (Section 4.1) because the capture can have been done on a
+           remote machine.  The string is not zero-terminated.
 
    Examples: "Windows XP SP2", "openSUSE 10.2".
 
    if_fcslen:
-      The if_fcslen option is an 8-bit unsigned integer value that
-      specifies the length of the Frame Check Sequence (in bits) for
-      this interface.  For link layers whose FCS length can change
-      during time, the Enhanced Packet Block epb_flags Option can be
-      used in each Enhanced Packet Block (see Section 4.3.1).
+           The if_fcslen option is an 8-bit unsigned integer value that
+           specifies the length of the Frame Check Sequence (in bits)
+           for this interface.  For link layers whose FCS length can
+           change during time, the Enhanced Packet Block epb_flags
+           Option can be used in each Enhanced Packet Block (see
+           Section 4.3.1).
 
    Example: '4'.
 
    if_tsoffset:
-      The if_tsoffset option is a 64-bit signed integer value that
-      specifies an offset (in seconds) that must be added to the
-      timestamp of each packet to obtain the absolute timestamp of a
-      packet.  If the option is missing, the timestamps stored in the
-      packet MUST be considered absolute timestamps.  The time zone of
-      the offset can be specified with the option if_tzone.  TODO: won't
-      a if_tsoffset_low for fractional second offsets be useful for
-      highly synchronized capture systems?
+           The if_tsoffset option is a 64-bit signed integer value that
+           specifies an offset (in seconds) that must be added to the
+           timestamp of each packet to obtain the absolute timestamp of
+           a packet.  If the option is missing, the timestamps stored in
+           the packet MUST be considered absolute timestamps.  The time
+           zone of the offset can be specified with the option if_tzone.
+           TODO: won't a if_tsoffset_low for fractional second offsets
+           be useful for highly synchronized capture systems?
 
    Example: '1234'.
 
    if_hardware:
-      The if_hardware option is a UTF-8 string containing the
-      description of the interface hardware.  The string is not zero-
-      terminated.
+           The if_hardware option is a UTF-8 string containing the
+           description of the interface hardware.  The string is not
+           zero-terminated.
 
    Examples: "Broadcom NetXtreme", "Intel(R) PRO/1000 MT Network
    Connection", "NETGEAR WNA1000Mv2 N150 Wireless USB Micro Adapter".
 
    if_txspeed:
-      The if_txrxspeeds option is a 64-bit unsigned value indicating the
-      interface transmit speed in bits per second.
+           The if_txrxspeeds option is a 64-bit unsigned value
+           indicating the interface transmit speed in bits per second.
 
    Example: the 64-bit decimal number 1024000 for 1024Kbps.
 
    if_rxspeed:
-      The if_rxspeed option is a 64-bit unsigned value indicating the
-      interface receive speed, in bits per second.
+           The if_rxspeed option is a 64-bit unsigned value indicating
+           the interface receive speed, in bits per second.
 
    Example: the 64-bit decimal number 8192000 for 8192Kbps.
 
@@ -1158,77 +1167,83 @@ Table of Contents
                    Table 4: Enhanced Packet Block Options
 
    epb_flags:
-      The epb_flags option is a 32-bit flags word containing link-layer
-      information.  A complete specification of the allowed flags can be
-      found in Section 4.3.1.
+           The epb_flags option is a 32-bit flags word containing link-
+           layer information.  A complete specification of the allowed
+           flags can be found in Section 4.3.1.
 
    Example: '0'.
 
    epb_hash:
-      The epb_hash option contains a hash of the packet.  The first
-      octet specifies the hashing algorithm, while the following octets
-      contain the actual hash, whose size depends on the hashing
-      algorithm, and hence from the value in the first octet.  The
-      hashing algorithm can be: 2s complement (algorithm octet = 0, size
-      = XXX), XOR (algorithm octet = 1, size=XXX), CRC32 (algorithm
-      octet = 2, size = 4), MD-5 (algorithm octet = 3, size = 16), SHA-1
-      (algorithm octet = 4, size = 20), Toeplitz (algorithm octet = 5,
-      size = 4).  The hash covers only the packet, not the header added
-      by the capture driver: this gives the possibility to calculate it
-      inside the network card.  The hash allows easier comparison/
-      merging of different capture files, and reliable data transfer
-      between the data acquisition system and the capture library.
+           The epb_hash option contains a hash of the packet.  The first
+           octet specifies the hashing algorithm, while the following
+           octets contain the actual hash, whose size depends on the
+           hashing algorithm, and hence from the value in the first
+           octet.  The hashing algorithm can be: 2s complement
+           (algorithm octet = 0, size = XXX), XOR (algorithm octet = 1,
+           size=XXX), CRC32 (algorithm octet = 2, size = 4), MD-5
+           (algorithm octet = 3, size = 16), SHA-1 (algorithm octet = 4,
+           size = 20), Toeplitz (algorithm octet = 5, size = 4).  The
+           hash covers only the packet, not the header added by the
+           capture driver: this gives the possibility to calculate it
+           inside the network card.  The hash allows easier comparison/
+           merging of different capture files, and reliable data
+           transfer between the data acquisition system and the capture
+           library.
 
    Examples: '02 EC 1D 87 97', '03 45 6E C2 17 7C 10 1E 3C 2E 99 6E C2
    9A 3D 50 8E'.
 
    epb_dropcount:
-      The epb_dropcount option is a 64-bit unsigned integer value
-      specifying the number of packets lost (by the interface and the
-      operating system) between this packet and the preceding one for
-      the same interface or, for the first packet for an interface,
-      between this packet and the start of the capture process.
+           The epb_dropcount option is a 64-bit unsigned integer value
+           specifying the number of packets lost (by the interface and
+           the operating system) between this packet and the preceding
+           one for the same interface or, for the first packet for an
+           interface, between this packet and the start of the capture
+           process.
 
    Example: '0'.
 
    epb_packetid:
-      The epb_packetid option is a 64-bit unsigned integer that uniquely
-      identifies the packet.  If the same packet is seen by multiple
-      interfaces and there is a way for the capture application to
-      correlate them, the same epb_packetid value must be used.  An
-      example could be a router that captures packets on all its
-      interfaces in both directions.  When a packet hits interface A on
-      ingress, an EPB entry gets created, TTL gets decremented, and
-      right before it egresses on interface B another EPB entry gets
-      created in the trace file.  In this case, two packets are in the
-      capture file, which are not identical but the epb_packetid can be
-      used to correlate them.
+           The epb_packetid option is a 64-bit unsigned integer that
+           uniquely identifies the packet.  If the same packet is seen
+           by multiple interfaces and there is a way for the capture
+           application to correlate them, the same epb_packetid value
+           must be used.  An example could be a router that captures
+           packets on all its interfaces in both directions.  When a
+           packet hits interface A on ingress, an EPB entry gets
+           created, TTL gets decremented, and right before it egresses
+           on interface B another EPB entry gets created in the trace
+           file.  In this case, two packets are in the capture file,
+           which are not identical but the epb_packetid can be used to
+           correlate them.
 
    Example: '0'.
 
    epb_queue:
-      The epb_queue option is a 32-bit unsigned integer that identifies
-      on which queue of the interface the specific packet was received.
+           The epb_queue option is a 32-bit unsigned integer that
+           identifies on which queue of the interface the specific
+           packet was received.
 
    Example: '0'.
 
    epb_verdict:
-      The epb_verdict option stores a verdict of the packet.  The
-      verdict indicates what would be done with the packet after
-      processing it.  For example, a firewall could drop the packet.
-      This verdict can be set by various components, i.e. Hardware,
-      Linux's eBPF TC or XDP framework, etc. etc.  The first octet
-      specifies the verdict type, while the following octets contain the
-      actual verdict data, whose size depends on the verdict type, and
-      hence from the value in the first octet.  The verdict type can be:
-      Hardware (type octet = 0, size = variable), Linux_eBPF_TC (type
-      octet = 1, size = 8 (64-bit unsigned integer), value = TC_ACT_* as
-      defined in the Linux pck_cls.h (https://git.kernel.org/pub/scm/lin
-      ux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/
-      pkt_cls.h) include), Linux_eBPF_XDP (type octet = 2, size = 8
-      (64-bit unsigned integer), value = xdp_action as defined in the
-      Linux pbf.h (https://git.kernel.org/pub/scm/linux/kernel/git/torva
-      lds/linux.git/tree/include/uapi/linux/bpf.h) include).
+           The epb_verdict option stores a verdict of the packet.  The
+           verdict indicates what would be done with the packet after
+           processing it.  For example, a firewall could drop the
+           packet.  This verdict can be set by various components, i.e.
+           Hardware, Linux's eBPF TC or XDP framework, etc. etc.  The
+           first octet specifies the verdict type, while the following
+           octets contain the actual verdict data, whose size depends on
+           the verdict type, and hence from the value in the first
+           octet.  The verdict type can be: Hardware (type octet = 0,
+           size = variable), Linux_eBPF_TC (type octet = 1, size = 8
+           (64-bit unsigned integer), value = TC_ACT_* as defined in the
+           Linux pck_cls.h (https://git.kernel.org/pub/scm/linux/kernel/
+           git/torvalds/linux.git/tree/include/uapi/linux/pkt_cls.h)
+           include), Linux_eBPF_XDP (type octet = 2, size = 8 (64-bit
+           unsigned integer), value = xdp_action as defined in the Linux
+           pbf.h (https://git.kernel.org/pub/scm/linux/kernel/git/torval
+           ds/linux.git/tree/include/uapi/linux/bpf.h) include).
 
    Example: '02 00 00 00 00 00 00 00 02' for Linux_eBPF_XDP with verdict
    XDP_PASS.
@@ -1443,19 +1458,21 @@ Table of Contents
                    Table 6: Name Resolution Block Records
 
    nrb_record_end:
-      The nrb_record_end record delimits the end of name resolution
-      records.  This record is needed to determine when the list of name
-      resolution records has ended and some options (if any) begin.
+           The nrb_record_end record delimits the end of name resolution
+           records.  This record is needed to determine when the list of
+           name resolution records has ended and some options (if any)
+           begin.
 
    nrb_record_ipv4:
-      The nrb_record_ipv4 record specifies an IPv4 address (contained in
-      the first 4 octets), followed by one or more zero-terminated UTF-8
-      strings containing the DNS entries for that address.  The minimum
-      valid Record Length for this Record Type is thus 6: 4 for the IP
-      octets, 1 character, and a zero-value octet terminator.  Note that
-      the IP address is treated as four octets, one for each octet of
-      the IP address; it is not a 32-bit word, and thus the endianness
-      of the SHB does not affect this field's value.
+           The nrb_record_ipv4 record specifies an IPv4 address
+           (contained in the first 4 octets), followed by one or more
+           zero-terminated UTF-8 strings containing the DNS entries for
+           that address.  The minimum valid Record Length for this
+           Record Type is thus 6: 4 for the IP octets, 1 character, and
+           a zero-value octet terminator.  Note that the IP address is
+           treated as four octets, one for each octet of the IP address;
+           it is not a 32-bit word, and thus the endianness of the SHB
+           does not affect this field's value.
 
    Example: '127 0 0 1'"localhost".
 
@@ -1463,11 +1480,12 @@ Table of Contents
    valid?]
 
    nrb_record_ipv6:
-      The nrb_record_ipv6 record specifies an IPv6 address (contained in
-      the first 16 octets), followed by one or more zero-terminated
-      strings containing the DNS entries for that address.  The minimum
-      valid Record Length for this Record Type is thus 18: 16 for the IP
-      octets, 1 character, and a zero-value octet terminator.
+           The nrb_record_ipv6 record specifies an IPv6 address
+           (contained in the first 16 octets), followed by one or more
+           zero-terminated strings containing the DNS entries for that
+           address.  The minimum valid Record Length for this Record
+           Type is thus 18: 16 for the IP octets, 1 character, and a
+           zero-value octet terminator.
 
    Example: '20 01 0d b8 00 00 00 00 00 00 00 00 12 34 56 78'"somehost".
 
@@ -1507,23 +1525,24 @@ Table of Contents
                    Table 7: Name Resolution Block Options
 
    ns_dnsname:
-      The ns_dnsname option is a UTF-8 string containing the name of the
-      machine (DNS server) used to perform the name resolution.  The
-      string is not zero-terminated.
+           The ns_dnsname option is a UTF-8 string containing the name
+           of the machine (DNS server) used to perform the name
+           resolution.  The string is not zero-terminated.
 
    Example: "our_nameserver".
 
    ns_dnsIP4addr:
-      The ns_dnsIP4addr option specifies the IPv4 address of the DNS
-      server.  Note that the IP address is treated as four octets, one
-      for each octet of the IP address; it is not a 32-bit word, and
-      thus the endianness of the SHB does not affect this field's value.
+           The ns_dnsIP4addr option specifies the IPv4 address of the
+           DNS server.  Note that the IP address is treated as four
+           octets, one for each octet of the IP address; it is not a
+           32-bit word, and thus the endianness of the SHB does not
+           affect this field's value.
 
    Example: '192 168 0 1'.
 
    ns_dnsIP6addr:
-      The ns_dnsIP6addr option specifies the IPv6 address of the DNS
-      server.
+           The ns_dnsIP6addr option specifies the IPv6 address of the
+           DNS server.
 
    Example: '20 01 0d b8 00 00 00 00 00 00 00 00 12 34 56 78'.
 
@@ -1608,62 +1627,63 @@ Table of Contents
                Table 8: Interface Statistics Block Options
 
    isb_starttime:
-      The isb_starttime option specifies the time the capture started;
-      time will be stored in two blocks of four octets each.  The format
-      of the timestamp is the same as the one defined in the Enhanced
-      Packet Block (Section 4.3); the length of a unit of time is
-      specified by the 'if_tsresol' option (see Figure 10) of the
-      Interface Description Block referenced by this packet.
+           The isb_starttime option specifies the time the capture
+           started; time will be stored in two blocks of four octets
+           each.  The format of the timestamp is the same as the one
+           defined in the Enhanced Packet Block (Section 4.3); the
+           length of a unit of time is specified by the 'if_tsresol'
+           option (see Figure 10) of the Interface Description Block
+           referenced by this packet.
 
    Example: '96 c3 04 00 73 89 6a 65', in Little Endian, decodes to
    2012-06-29 06:17:00.834163 UTC.
 
    isb_endtime:
-      The isb_endtime option specifies the time the capture ended; time
-      will be stored in two blocks of four octets each.  The format of
-      the timestamp is the same as the one defined in the Enhanced
-      Packet Block (Section 4.3); the length of a unit of time is
-      specified by the 'if_tsresol' option (see Figure 10) of the
-      Interface Description Block referenced by this packet.
+           The isb_endtime option specifies the time the capture ended;
+           time will be stored in two blocks of four octets each.  The
+           format of the timestamp is the same as the one defined in the
+           Enhanced Packet Block (Section 4.3); the length of a unit of
+           time is specified by the 'if_tsresol' option (see Figure 10)
+           of the Interface Description Block referenced by this packet.
 
    Example: '97 c3 04 00 aa 47 ca 64', in Little Endian, decodes to
    2012-06-29 07:28:25.298858 UTC.
 
    isb_ifrecv:
-      The isb_ifrecv option specifies the 64-bit unsigned integer number
-      of packets received from the physical interface starting from the
-      beginning of the capture.
+           The isb_ifrecv option specifies the 64-bit unsigned integer
+           number of packets received from the physical interface
+           starting from the beginning of the capture.
 
    Example: the decimal number 100.
 
    isb_ifdrop:
-      The isb_ifdrop option specifies the 64-bit unsigned integer number
-      of packets dropped by the interface due to lack of resources
-      starting from the beginning of the capture.
+           The isb_ifdrop option specifies the 64-bit unsigned integer
+           number of packets dropped by the interface due to lack of
+           resources starting from the beginning of the capture.
 
    Example: '0'.
 
    isb_filteraccept:
-      The isb_filteraccept option specifies the 64-bit unsigned integer
-      number of packets accepted by filter starting from the beginning
-      of the capture.
+           The isb_filteraccept option specifies the 64-bit unsigned
+           integer number of packets accepted by filter starting from
+           the beginning of the capture.
 
    Example: the decimal number 100.
 
    isb_osdrop:
-      The isb_osdrop option specifies the 64-bit unsigned integer number
-      of packets dropped by the operating system starting from the
-      beginning of the capture.
+           The isb_osdrop option specifies the 64-bit unsigned integer
+           number of packets dropped by the operating system starting
+           from the beginning of the capture.
 
    Example: '0'.
 
    isb_usrdeliv:
-      The isb_usrdeliv option specifies the 64-bit unsigned integer
-      number of packets delivered to the user starting from the
-      beginning of the capture.  The value contained in this field can
-      be different from the value 'isb_filteraccept - isb_osdrop'
-      because some packets could still be in the OS buffers when the
-      capture ended.
+           The isb_usrdeliv option specifies the 64-bit unsigned integer
+           number of packets delivered to the user starting from the
+           beginning of the capture.  The value contained in this field
+           can be different from the value 'isb_filteraccept -
+           isb_osdrop' because some packets could still be in the OS
+           buffers when the capture ended.
 
    Example: '0'.
 
@@ -1798,54 +1818,56 @@ Table of Contents
    The following is a list of Secrets Types.
 
    0x544c534b:
-      TLS Key Log. This format is described at NSS Key Log Format
-      (https://developer.mozilla.org/NSS_Key_Log_Format).  Every line
-      MUST be properly terminated with either carriage return and
-      linefeed ('\r\n') or linefeed ('\n').  Tools MUST be able to
-      handle both line endings.
+           TLS Key Log. This format is described at NSS Key Log Format
+           (https://developer.mozilla.org/NSS_Key_Log_Format).  Every
+           line MUST be properly terminated with either carriage return
+           and linefeed ('\r\n') or linefeed ('\n').  Tools MUST be able
+           to handle both line endings.
 
    0x57474b4c:
-      WireGuard Key Log. Every line consists of the key type, equals
-      sign ('='), and the base64-encoded 32-byte key with optional
-      spaces before and in between.  The key type is one of
-      LOCAL_STATIC_PRIVATE_KEY, REMOTE_STATIC_PUBLIC_KEY,
-      LOCAL_EPHEMERAL_PRIVATE_KEY, or PRESHARED|_KEY.  This matches the
-      output of extract-handshakes.sh
-      (https://git.zx2c4.com/WireGuard/tree/contrib/examples/extract-
-      handshakes/README) which is part of the WireGuard
-      (https://www.wireguard.com/) project.  A PRESHARED_KEY line is
-      linked to a session matched by a previous
-      LOCAL_EPHEMERAL_PRIVATE_KEY line.  Every line MUST be properly
-      terminated with either carriage return and linefeed ('\r\n') or
-      linefeed ('\n').  Tools MUST be able to handle both line endings.
+           WireGuard Key Log. Every line consists of the key type,
+           equals sign ('='), and the base64-encoded 32-byte key with
+           optional spaces before and in between.  The key type is one
+           of LOCAL_STATIC_PRIVATE_KEY, REMOTE_STATIC_PUBLIC_KEY,
+           LOCAL_EPHEMERAL_PRIVATE_KEY, or PRESHARED|_KEY.  This matches
+           the output of extract-handshakes.sh
+           (https://git.zx2c4.com/WireGuard/tree/contrib/examples/
+           extract-handshakes/README) which is part of the WireGuard
+           (https://www.wireguard.com/) project.  A PRESHARED_KEY line
+           is linked to a session matched by a previous
+           LOCAL_EPHEMERAL_PRIVATE_KEY line.  Every line MUST be
+           properly terminated with either carriage return and linefeed
+           ('\r\n') or linefeed ('\n').  Tools MUST be able to handle
+           both line endings.
 
    Warning: LOCAL_STATIC_PRIVATE_KEY and potentially PRESHARED_KEY are
    long-term secrets, users SHOULD only store non-production keys, or
    ensure proper protection of the pcapng file.
 
    0x5a4e574b:
-      ZigBee NWK Key and ZigBee PANID for that network.  Network Key as
-      described in the ZigBee Specification
-      (https://zigbeealliance.org/) 05-3473-21 (R21) section 4.2.2.  The
-      NWK Key is a 16 octet binary AES-128 key used to secure NWK Level
-      frames within a single PAN.  The NWK key is immediately followed
-      by the 2 octet (16 bit) network PANID in little endian format.  If
-      and when the NWK Key changes a new DSB will contain the new NWK
-      Key.
+           ZigBee NWK Key and ZigBee PANID for that network.  Network
+           Key as described in the ZigBee Specification
+           (https://zigbeealliance.org/) 05-3473-21 (R21) section 4.2.2.
+           The NWK Key is a 16 octet binary AES-128 key used to secure
+           NWK Level frames within a single PAN.  The NWK key is
+           immediately followed by the 2 octet (16 bit) network PANID in
+           little endian format.  If and when the NWK Key changes a new
+           DSB will contain the new NWK Key.
 
    0x5a415053:
-      ZigBee APS Key. Application Support Link Key as described in the
-      ZigBee Specification (https://zigbeealliance.org/) 05-3473-21
-      (R21) section 4.4.  Each 16 octet binary AES-128 key secures
-      frames exchanged between a pair of network nodes.  The APS Key is
-      immediately followed by the 2 octet (16 bit) network PANID in
-      little endian format.  The PANID is followed by the 2 octet (16
-      bit) short addresses, in little endian format, of the nodes to
-      which the APS Key applies.  The numerically lower short address
-      shall come first.  There is a APS Key DSB for each node pair for
-      which the Link Key is known.  As new links are formed, new DSBs
-      contain the new Keys.  If the APS Key changes for an existing
-      link, it is contained in a new DSB with the new APS Key.
+           ZigBee APS Key. Application Support Link Key as described in
+           the ZigBee Specification (https://zigbeealliance.org/)
+           05-3473-21 (R21) section 4.4.  Each 16 octet binary AES-128
+           key secures frames exchanged between a pair of network nodes.
+           The APS Key is immediately followed by the 2 octet (16 bit)
+           network PANID in little endian format.  The PANID is followed
+           by the 2 octet (16 bit) short addresses, in little endian
+           format, of the nodes to which the APS Key applies.  The
+           numerically lower short address shall come first.  There is a
+           APS Key DSB for each node pair for which the Link Key is
+           known.  As new links are formed, new DSBs contain the new
+           Keys.  If the APS Key changes for an existing link, it is
+           contained in a new DSB with the new APS Key.
 
       0                   1                   2                   3
       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -2554,14 +2576,14 @@ Appendix A.  Packet Block (obsolete!)
                       Table 10: Packet Block Options
 
    pack_flags:
-      The pack_flags option is the same as the epb_flags of the enhanced
-      packet block.
+           The pack_flags option is the same as the epb_flags of the
+           enhanced packet block.
 
    Example: '0'.
 
    pack_hash:
-      The pack_hash option is the same as the epb_hash of the enhanced
-      packet block.
+           The pack_hash option is the same as the epb_hash of the
+           enhanced packet block.
 
    Examples: '02 EC 1D 87 97', '03 45 6E C2 17 7C 10 1E 3C 2E 99 6E C2
    9A 3D 50 8E'.

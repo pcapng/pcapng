@@ -260,7 +260,10 @@ Table of Contents
 
 8.  IANA Considerations
 
-   TBD.
+   IANA is requested to create a registry entitled "PCAP LinkType
+   values".
+
+   This registry is for values from 1 to 2147483647 (2^31).
 
    [Open issue: decide whether the LinkType values should be IANA
    registries.  And if so, what the IANA policy for each should be (see
