@@ -2,14 +2,15 @@
 
 
 
-Network Working Group                                          G. Harris
-Internet-Draft                                          21 December 2020
-Intended status: Informational                                          
-Expires: 24 June 2021
+Network Working Group                                     G. Harris, Ed.
+Internet-Draft                                                          
+Intended status: Informational                             M. Richardson
+Expires: 24 June 2021                                          Sandelman
+                                                        21 December 2020
 
 
                         PCAP Capture File Format
-                      draft-gharris-opsawg-pcap-00
+                      draft-gharris-opsawg-pcap-01
 
 Abstract
 
@@ -17,6 +18,17 @@ Abstract
    record captured packets to a file.  Programs using the libpcap
    library to read and write those files, and thus reading and writing
    files in that format, include tcpdump.
+
+Discussion Venues
+
+   This note is to be removed before publishing as an RFC.
+
+   Discussion of this document takes place on the OPSAWG Working Group
+   mailing list (opsawg@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/opsawg/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/pcapng/pcapng.
 
 Status of This Memo
 
@@ -54,17 +66,14 @@ Table of Contents
    1.  Introduction
    2.  Terminology
    3.  General File Structure
-   4.  File Header
-   5.  Packet Record
-   6.  Recommended File Name Extension: .pcap
-   7.  Security Considerations
-   8.  IANA Considerations
-   9.  Contributors
-   10. Acknowledgments
-   11. References
-     11.1.  Normative References
-     11.2.  Informational References
-   Author's Address
+   4.  Packet Record
+   5.  Recommended File Name Extension: .pcap
+   6.  Security Considerations
+   7.  IANA Considerations
+   8.  Contributors
+   9.  Acknowledgments
+   10. Normative References
+   Authors' Addresses
 
 1.  Introduction
 
@@ -81,8 +90,10 @@ Table of Contents
 2.  Terminology
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-   document are to be interpreted as described in [RFC2119].
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
 
 3.  General File Structure
 
@@ -99,27 +110,27 @@ Table of Contents
    data when reading / writing on the host itself, which is the most
    common case when generating/processing capture captures.
 
-4.  File Header
+   1.  File Header
 
    The File Header has the following format:
 
-                           1                   2                   3
-       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    0 |                          Magic Number                         |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    4 |          Major Version        |         Minor Version         |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    8 |                           Reserved1                           |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   12 |                           Reserved2                           |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   16 |                            SnapLen                            |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   20 |                           LinkType                            |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+                            1                   2                   3
+        0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     0 |                          Magic Number                         |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     4 |          Major Version        |         Minor Version         |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     8 |                           Reserved1                           |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    12 |                           Reserved2                           |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    16 |                            SnapLen                            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    20 |                           LinkType                            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-                           Figure 1: File Header
+                         Figure 1: File Header
 
    The File Header length is 24 octets.
 
@@ -181,29 +192,29 @@ Table of Contents
       SHOULD be filled with 0 by pcap file writers, and MUST be ignored
       by pcap file readers.
 
-5.  Packet Record
+4.  Packet Record
 
    A Packet Record is the standard container for storing the packets
    coming from the network.
 
-                          1                   2                   3
-      0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    0 |                      Timestamp (Seconds)                      |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    4 |            Timestamp (Microseconds or nanoseconds)            |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-    8 |                    Captured Packet Length                     |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   12 |                    Original Packet Length                     |
-      +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
-   16 /                                                               /
-      /                          Packet Data                          /
-      /                        variable length                        /
-      /                                                               /
-      +---------------------------------------------------------------+
+                           1                   2                   3
+       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     0 |                      Timestamp (Seconds)                      |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     4 |            Timestamp (Microseconds or nanoseconds)            |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+     8 |                    Captured Packet Length                     |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    12 |                    Original Packet Length                     |
+       +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    16 /                                                               /
+       /                          Packet Data                          /
+       /                        variable length                        /
+       /                                                               /
+       +---------------------------------------------------------------+
 
-                          Figure 2: Packet Record
+                        Figure 2: Packet Record
 
    The Packet Header length is 16 octets.
 
@@ -235,7 +246,7 @@ Table of Contents
       LinkType field specified in the file header (see Figure 1) and it
       is specified in the entry for that format in [LINKTYPES].
 
-6.  Recommended File Name Extension: .pcap
+5.  Recommended File Name Extension: .pcap
 
    The recommended file name extension for the "PCAP Capture File
    Format" specified in this document is ".pcap".
@@ -254,47 +265,47 @@ Table of Contents
    for a plethora of different capture file formats) file name
    extensions other than .pcap should be avoided.
 
-7.  Security Considerations
+6.  Security Considerations
 
    TBD.
 
-8.  IANA Considerations
+7.  IANA Considerations
 
-   IANA is requested to create a registry entitled "PCAP LinkType
-   values".
-
-   This registry is for values from 1 to 2147483647 (2^31).
+   TBD.
 
    [Open issue: decide whether the LinkType values should be IANA
    registries.  And if so, what the IANA policy for each should be (see
    RFC 5226)]
 
-9.  Contributors
+8.  Contributors
 
    [Insert pcap developers etc. here].
 
-10.  Acknowledgments
+9.  Acknowledgments
 
    The authors wish to thank [insert list here] and many others for
    their invaluable comments.
 
-11.  References
-
-11.1.  Normative References
+10.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-11.2.  Informational References
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-   [LINKTYPES]
-              The Tcpdump Group, "the tcpdump.org link-layer header
-              types registry", <http://www.tcpdump.org/linktypes.html>.
+Authors' Addresses
 
-Author's Address
-
-   Guy Harris
+   Guy Harris (editor)
 
    Email: gharris@sonic.net
+
+
+   Michael C. Richardson
+   Sandelman Software Works Inc
+
+   Email: mcr+ietf@sandelman.ca
+   URI:   http://www.sandelman.ca/
