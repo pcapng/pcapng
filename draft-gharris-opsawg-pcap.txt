@@ -3,9 +3,9 @@
 
 
 Network Working Group                                          G. Harris
-Internet-Draft                                         28 September 2020
+Internet-Draft                                          21 December 2020
 Intended status: Informational                                          
-Expires: 1 April 2021
+Expires: 24 June 2021
 
 
                         PCAP Capture File Format
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 April 2021.
+   This Internet-Draft will expire on 24 June 2021.
 
 Copyright Notice
 
@@ -49,31 +49,22 @@ Copyright Notice
    as described in Section 4.e of the Trust Legal Provisions and are
    provided without warranty as described in the Simplified BSD License.
 
-
-
-
-
-Harris                    Expires 1 April 2021                  [Page 1]
-
-Internet-Draft                    pcap                    September 2020
-
-
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-   2.  Terminology . . . . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  General File Structure  . . . . . . . . . . . . . . . . . . .   2
-   4.  File Header . . . . . . . . . . . . . . . . . . . . . . . . .   3
-   5.  Packet Record . . . . . . . . . . . . . . . . . . . . . . . .   4
-   6.  Recommended File Name Extension: .pcap  . . . . . . . . . . .   6
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
-   9.  Contributors  . . . . . . . . . . . . . . . . . . . . . . . .   6
-   10. Acknowledgments . . . . . . . . . . . . . . . . . . . . . . .   6
-   11. References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
-     11.1.  Normative References . . . . . . . . . . . . . . . . . .   6
-     11.2.  Informational References . . . . . . . . . . . . . . . .   7
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
+   1.  Introduction
+   2.  Terminology
+   3.  General File Structure
+   4.  File Header
+   5.  Packet Record
+   6.  Recommended File Name Extension: .pcap
+   7.  Security Considerations
+   8.  IANA Considerations
+   9.  Contributors
+   10. Acknowledgments
+   11. References
+     11.1.  Normative References
+     11.2.  Informational References
+   Author's Address
 
 1.  Introduction
 
@@ -102,17 +93,6 @@ Table of Contents
    saved according to the characteristics (little endian / big endian)
    of the capturing machine.  This refers to all the fields that are
    saved as numbers and that span over two or more octets.
-
-
-
-
-
-
-
-Harris                    Expires 1 April 2021                  [Page 2]
-
-Internet-Draft                    pcap                    September 2020
-
 
    The approach of having the file saved in the native format of the
    generating host is more efficient because it avoids translation of
@@ -163,13 +143,6 @@ Internet-Draft                    pcap                    September 2020
       code paths for the two formats) and code that reads the old format
       could not read the new format.
 
-
-
-Harris                    Expires 1 April 2021                  [Page 3]
-
-Internet-Draft                    pcap                    September 2020
-
-
    *  Minor Version (16 bits): an unsigned value, giving the number of
       the current minor version of the format.  The value is for the
       current version of the format is 4.  This value should change if
@@ -212,19 +185,6 @@ Internet-Draft                    pcap                    September 2020
 
    A Packet Record is the standard container for storing the packets
    coming from the network.
-
-
-
-
-
-
-
-
-
-Harris                    Expires 1 April 2021                  [Page 4]
-
-Internet-Draft                    pcap                    September 2020
-
 
                           1                   2                   3
       0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -275,13 +235,6 @@ Internet-Draft                    pcap                    September 2020
       LinkType field specified in the file header (see Figure 1) and it
       is specified in the entry for that format in [LINKTYPES].
 
-
-
-Harris                    Expires 1 April 2021                  [Page 5]
-
-Internet-Draft                    pcap                    September 2020
-
-
 6.  Recommended File Name Extension: .pcap
 
    The recommended file name extension for the "PCAP Capture File
@@ -331,13 +284,6 @@ Internet-Draft                    pcap                    September 2020
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-
-
-Harris                    Expires 1 April 2021                  [Page 6]
-
-Internet-Draft                    pcap                    September 2020
-
-
 11.2.  Informational References
 
    [LINKTYPES]
@@ -349,44 +295,3 @@ Author's Address
    Guy Harris
 
    Email: gharris@sonic.net
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Harris                    Expires 1 April 2021                  [Page 7]

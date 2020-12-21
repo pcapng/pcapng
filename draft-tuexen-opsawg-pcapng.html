@@ -17,8 +17,26 @@
 file. This format is extensible; Wireshark can currently read and write
 it, and libpcap can currently read some pcapng files. 
     " name="description">
-<meta content="xml2rfc 3.1.1" name="generator">
+<meta content="xml2rfc 3.5.0" name="generator">
 <meta content="draft-tuexen-opsawg-pcapng-02" name="ietf.draft">
+<!-- Generator version information:
+  xml2rfc 3.5.0
+    Python 3.8.5
+    appdirs 1.4.4
+    ConfigArgParse 1.2.3
+    google-i18n-address 2.4.0
+    html5lib 1.1
+    intervaltree 3.0.2
+    Jinja2 2.11.2
+    kitchen 1.2.6
+    lxml 4.5.0
+    pycountry 19.8.18
+    pyflakes 2.1.1
+    PyYAML 5.3.1
+    requests 2.22.0
+    setuptools 45.2.0
+    six 1.14.0
+-->
 <link href="draft-tuexen-opsawg-pcapng.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@import url('https://martinthomson.github.io/i-d-template/fonts.css');
@@ -62,11 +80,11 @@ body {
 }
 h1, h2, h3 {
   font-size: 22px;
-  line-height: 26px;
+  line-height: 27px;
 }
 h4, h5, h6 {
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 20px;
+  line-height: 24px;
 }
 
 /* general structure */
@@ -222,6 +240,7 @@ img {
 }
 figure {
   margin: 0.5em 0;
+  padding: 0;
 }
 figure blockquote {
   margin: 0.8em 0.4em 0.4em;
@@ -807,11 +826,11 @@ address div.right {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">pcapng</td>
-<td class="right">September 2020</td>
+<td class="right">December 2020</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tuexen, et al.</td>
-<td class="center">Expires 3 April 2021</td>
+<td class="center">Expires 24 June 2021</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -824,12 +843,12 @@ address div.right {
 <dd class="internet-draft">draft-tuexen-opsawg-pcapng-02</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2020-09-30" class="published">30 September 2020</time>
+<time datetime="2020-12-21" class="published">21 December 2020</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2021-04-03">3 April 2021</time></dd>
+<dd class="expires"><time datetime="2021-06-24">24 June 2021</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -877,9 +896,9 @@ it, and libpcap can currently read some pcapng files.<a href="#section-abstract-
 <p id="section-note.1-1">This note is to be removed before publishing as an RFC.<a href="#section-note.1-1" class="pilcrow">¶</a></p>
 <p id="section-note.1-2">Discussion of this document takes place on the
   OPSAWG Working Group mailing list (opsawg@ietf.org),
-  which is archived at <a href="https://mailarchive.ietf.org/arch/browse/opsawg/">https://mailarchive.ietf.org/arch/browse/opsawg/</a>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
+  which is archived at <span><a href="https://mailarchive.ietf.org/arch/browse/opsawg/">https://mailarchive.ietf.org/arch/browse/opsawg/</a></span>.<a href="#section-note.1-2" class="pilcrow">¶</a></p>
 <p id="section-note.1-3">Source for this draft and an issue tracker can be found at
-  <a href="https://github.com/pcapng/pcapng">https://github.com/pcapng/pcapng</a>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
+  <span><a href="https://github.com/pcapng/pcapng">https://github.com/pcapng/pcapng</a></span>.<a href="#section-note.1-3" class="pilcrow">¶</a></p>
 </section>
 <div id="status-of-memo">
 <section id="section-boilerplate.1">
@@ -900,7 +919,7 @@ it, and libpcap can currently read some pcapng files.<a href="#section-abstract-
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 3 April 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 June 2021.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -928,175 +947,175 @@ it, and libpcap can currently read some pcapng files.<a href="#section-abstract-
         <a href="#" onclick="scroll(0,0)" class="toplink">▲</a><h2 id="name-table-of-contents">
 <a href="#name-table-of-contents" class="section-name selfRef">Table of Contents</a>
         </h2>
-<nav class="toc"><ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.1">
+<nav class="toc"><ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.1">
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="xref">1</a>.  <a href="#name-introduction" class="xref">Introduction</a><a href="#section-toc.1-1.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.2">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.2">
             <p id="section-toc.1-1.2.1" class="keepWithNext"><a href="#section-2" class="xref">2</a>.  <a href="#name-terminology" class="xref">Terminology</a><a href="#section-toc.1-1.2.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.2.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.2.2.1">
                 <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="xref">2.1</a>.  <a href="#name-acronyms" class="xref">Acronyms</a><a href="#section-toc.1-1.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.3">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="xref">3</a>.  <a href="#name-general-file-structure" class="xref">General File Structure</a><a href="#section-toc.1-1.3.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.3.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="xref">3.1</a>.  <a href="#name-general-block-structure" class="xref">General Block Structure</a><a href="#section-toc.1-1.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.2">
                 <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="xref">3.2</a>.  <a href="#name-block-types" class="xref">Block Types</a><a href="#section-toc.1-1.3.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.3">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.3">
                 <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="xref">3.3</a>.  <a href="#name-logical-block-hierarchy" class="xref">Logical Block Hierarchy</a><a href="#section-toc.1-1.3.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.4">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.4">
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="xref">3.4</a>.  <a href="#name-physical-file-layout" class="xref">Physical File Layout</a><a href="#section-toc.1-1.3.2.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.5">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.5">
                 <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="xref">3.5</a>.  <a href="#name-options" class="xref">Options</a><a href="#section-toc.1-1.3.2.5.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.3.2.5.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.3.2.5.2.1">
                     <p id="section-toc.1-1.3.2.5.2.1.1"><a href="#section-3.5.1" class="xref">3.5.1</a>.  <a href="#name-custom-options" class="xref">Custom Options</a><a href="#section-toc.1-1.3.2.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.6">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.6">
                 <p id="section-toc.1-1.3.2.6.1"><a href="#section-3.6" class="xref">3.6</a>.  <a href="#name-data-format" class="xref">Data format</a><a href="#section-toc.1-1.3.2.6.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.3.2.6.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.3.2.6.2.1">
                     <p id="section-toc.1-1.3.2.6.2.1.1"><a href="#section-3.6.1" class="xref">3.6.1</a>.  <a href="#name-endianness" class="xref">Endianness</a><a href="#section-toc.1-1.3.2.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-                  <li class="toc compact ulEmpty" id="section-toc.1-1.3.2.6.2.2">
+                  <li class="ulEmpty compact toc" id="section-toc.1-1.3.2.6.2.2">
                     <p id="section-toc.1-1.3.2.6.2.2.1"><a href="#section-3.6.2" class="xref">3.6.2</a>.  <a href="#name-alignment" class="xref">Alignment</a><a href="#section-toc.1-1.3.2.6.2.2.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.4">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.4">
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="xref">4</a>.  <a href="#name-block-definition" class="xref">Block Definition</a><a href="#section-toc.1-1.4.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.4.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="xref">4.1</a>.  <a href="#name-section-header-block" class="xref">Section Header Block</a><a href="#section-toc.1-1.4.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.2">
                 <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="xref">4.2</a>.  <a href="#name-interface-description-block" class="xref">Interface Description Block</a><a href="#section-toc.1-1.4.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.3">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3">
                 <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="xref">4.3</a>.  <a href="#name-enhanced-packet-block" class="xref">Enhanced Packet Block</a><a href="#section-toc.1-1.4.2.3.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.4.2.3.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.4.2.3.2.1">
                     <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="xref">4.3.1</a>.  <a href="#name-enhanced-packet-block-flags" class="xref">Enhanced Packet Block Flags Word</a><a href="#section-toc.1-1.4.2.3.2.1.1" class="pilcrow">¶</a></p>
 </li>
                 </ul>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.4">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.4">
                 <p id="section-toc.1-1.4.2.4.1"><a href="#section-4.4" class="xref">4.4</a>.  <a href="#name-simple-packet-block" class="xref">Simple Packet Block</a><a href="#section-toc.1-1.4.2.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.5">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.5">
                 <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="xref">4.5</a>.  <a href="#name-name-resolution-block" class="xref">Name Resolution Block</a><a href="#section-toc.1-1.4.2.5.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.6">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.6">
                 <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="xref">4.6</a>.  <a href="#name-interface-statistics-block" class="xref">Interface Statistics Block</a><a href="#section-toc.1-1.4.2.6.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.7">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.7">
                 <p id="section-toc.1-1.4.2.7.1"><a href="#section-4.7" class="xref">4.7</a>.  <a href="#name-systemd-journal-export-bloc" class="xref">systemd Journal Export Block</a><a href="#section-toc.1-1.4.2.7.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.8">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.8">
                 <p id="section-toc.1-1.4.2.8.1"><a href="#section-4.8" class="xref">4.8</a>.  <a href="#name-decryption-secrets-block" class="xref">Decryption Secrets Block</a><a href="#section-toc.1-1.4.2.8.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.4.2.9">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.4.2.9">
                 <p id="section-toc.1-1.4.2.9.1"><a href="#section-4.9" class="xref">4.9</a>.  <a href="#name-custom-block" class="xref">Custom Block</a><a href="#section-toc.1-1.4.2.9.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.5">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.5">
             <p id="section-toc.1-1.5.1"><a href="#section-5" class="xref">5</a>.  <a href="#name-experimental-blocks-deserve" class="xref">Experimental Blocks (deserve further investigation)</a><a href="#section-toc.1-1.5.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.5.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.5.2.1">
                 <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="xref">5.1</a>.  <a href="#name-alternative-packet-blocks-e" class="xref">Alternative Packet Blocks (experimental)</a><a href="#section-toc.1-1.5.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.2">
                 <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="xref">5.2</a>.  <a href="#name-compression-block-experimen" class="xref">Compression Block (experimental)</a><a href="#section-toc.1-1.5.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.3">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.3">
                 <p id="section-toc.1-1.5.2.3.1"><a href="#section-5.3" class="xref">5.3</a>.  <a href="#name-encryption-block-experiment" class="xref">Encryption Block (experimental)</a><a href="#section-toc.1-1.5.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.4">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.4">
                 <p id="section-toc.1-1.5.2.4.1"><a href="#section-5.4" class="xref">5.4</a>.  <a href="#name-fixed-length-block-experime" class="xref">Fixed Length Block (experimental)</a><a href="#section-toc.1-1.5.2.4.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.5">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.5">
                 <p id="section-toc.1-1.5.2.5.1"><a href="#section-5.5" class="xref">5.5</a>.  <a href="#name-directory-block-experimenta" class="xref">Directory Block (experimental)</a><a href="#section-toc.1-1.5.2.5.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.6">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.6">
                 <p id="section-toc.1-1.5.2.6.1"><a href="#section-5.6" class="xref">5.6</a>.  <a href="#name-traffic-statistics-and-moni" class="xref">Traffic Statistics and Monitoring Blocks (experimental)</a><a href="#section-toc.1-1.5.2.6.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.5.2.7">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.5.2.7">
                 <p id="section-toc.1-1.5.2.7.1"><a href="#section-5.7" class="xref">5.7</a>.  <a href="#name-event-security-block-experi" class="xref">Event/Security Block (experimental)</a><a href="#section-toc.1-1.5.2.7.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.6">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.6">
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="xref">6</a>.  <a href="#name-vendor-specific-custom-exte" class="xref">Vendor-Specific Custom Extensions</a><a href="#section-toc.1-1.6.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.6.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.6.2.1">
                 <p id="section-toc.1-1.6.2.1.1"><a href="#section-6.1" class="xref">6.1</a>.  <a href="#name-supported-use-cases" class="xref">Supported Use-Cases</a><a href="#section-toc.1-1.6.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.2">
                 <p id="section-toc.1-1.6.2.2.1"><a href="#section-6.2" class="xref">6.2</a>.  <a href="#name-controlling-copy-behavior" class="xref">Controlling Copy Behavior</a><a href="#section-toc.1-1.6.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.3">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.3">
                 <p id="section-toc.1-1.6.2.3.1"><a href="#section-6.3" class="xref">6.3</a>.  <a href="#name-strings-vs-octets" class="xref">Strings vs. Octets</a><a href="#section-toc.1-1.6.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.6.2.4">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.6.2.4">
                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="xref">6.4</a>.  <a href="#name-endianness-issues" class="xref">Endianness Issues</a><a href="#section-toc.1-1.6.2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.7">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.7">
             <p id="section-toc.1-1.7.1"><a href="#section-7" class="xref">7</a>.  <a href="#name-recommended-file-name-exten" class="xref">Recommended File Name Extension: .pcapng</a><a href="#section-toc.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.8">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.8">
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-conclusions" class="xref">Conclusions</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.9">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.9">
             <p id="section-toc.1-1.9.1"><a href="#section-9" class="xref">9</a>.  <a href="#name-implementations" class="xref">Implementations</a><a href="#section-toc.1-1.9.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.10">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="xref">10</a>. <a href="#name-security-considerations" class="xref">Security Considerations</a><a href="#section-toc.1-1.10.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.11">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="xref">11</a>. <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.11.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.11.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.11.2.1">
                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="xref">11.1</a>.  <a href="#name-standardized-block-type-cod" class="xref">Standardized Block Type Codes</a><a href="#section-toc.1-1.11.2.1.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.12">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.12">
             <p id="section-toc.1-1.12.1"><a href="#section-12" class="xref">12</a>. <a href="#name-contributors" class="xref">Contributors</a><a href="#section-toc.1-1.12.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.13">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.13">
             <p id="section-toc.1-1.13.1"><a href="#section-13" class="xref">13</a>. <a href="#name-acknowledgments" class="xref">Acknowledgments</a><a href="#section-toc.1-1.13.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.14">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.14">
             <p id="section-toc.1-1.14.1"><a href="#section-14" class="xref">14</a>. <a href="#name-references" class="xref">References</a><a href="#section-toc.1-1.14.1" class="pilcrow">¶</a></p>
-<ul class="toc compact ulEmpty">
-<li class="toc compact ulEmpty" id="section-toc.1-1.14.2.1">
+<ul class="ulEmpty compact toc">
+<li class="ulEmpty compact toc" id="section-toc.1-1.14.2.1">
                 <p id="section-toc.1-1.14.2.1.1"><a href="#section-14.1" class="xref">14.1</a>.  <a href="#name-normative-references" class="xref">Normative References</a><a href="#section-toc.1-1.14.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="toc compact ulEmpty" id="section-toc.1-1.14.2.2">
+              <li class="ulEmpty compact toc" id="section-toc.1-1.14.2.2">
                 <p id="section-toc.1-1.14.2.2.1"><a href="#section-14.2" class="xref">14.2</a>.  <a href="#name-informative-references" class="xref">Informative References</a><a href="#section-toc.1-1.14.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.15">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.15">
             <p id="section-toc.1-1.15.1"><a href="#section-appendix.a" class="xref">Appendix A</a>.  <a href="#name-packet-block-obsolete" class="xref">Packet Block (obsolete!)</a><a href="#section-toc.1-1.15.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="toc compact ulEmpty" id="section-toc.1-1.16">
+          <li class="ulEmpty compact toc" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#section-appendix.b" class="xref"></a><a href="#name-authors-addresses" class="xref">Authors' Addresses</a><a href="#section-toc.1-1.16.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
@@ -1117,25 +1136,28 @@ from the extensibility point of view.<a href="#section-1-1" class="pilcrow">¶</
 <p id="section-1-2">This document proposes a new format for recording packet traces. The
 following goals are being pursued:<a href="#section-1-2" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-1-3">
-        <dt id="section-1-3.1">Extensibility:</dt>
+        <dt id="section-1-3.1">
+Extensibility:  </dt>
         <dd style="margin-left: 1.5em" id="section-1-3.2">
-  It should be possible to add new standard capabilities to the file
+          <p id="section-1-3.2.1">It should be possible to add new standard capabilities to the file
 format over time, and third parties should be able to enrich the
 information embedded in the file with proprietary extensions, with
-tools unaware of newer extensions being able to ignore them.<a href="#section-1-3.2" class="pilcrow">¶</a>
+tools unaware of newer extensions being able to ignore them.<a href="#section-1-3.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-1-3.3">Portability:</dt>
+<dt id="section-1-3.3">
+Portability:  </dt>
         <dd style="margin-left: 1.5em" id="section-1-3.4">
-  A capture trace must contain all the information needed to read data
+          <p id="section-1-3.4.1">A capture trace must contain all the information needed to read data
 independently from network, hardware and operating system of the
-machine that made the capture.<a href="#section-1-3.4" class="pilcrow">¶</a>
+machine that made the capture.<a href="#section-1-3.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
-<dt id="section-1-3.5">Merge/Append data:</dt>
+<dt id="section-1-3.5">
+Merge/Append data:  </dt>
         <dd style="margin-left: 1.5em" id="section-1-3.6">
-  It should be possible to add data at the end of a given file, and
-the resulting file must still be readable.<a href="#section-1-3.6" class="pilcrow">¶</a>
+          <p id="section-1-3.6.1">It should be possible to add data at the end of a given file, and
+the resulting file must still be readable.<a href="#section-1-3.6.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1156,39 +1178,46 @@ document are to be interpreted as described in <span>[<a href="#RFC2119" class="
         </h3>
 <p id="section-2.1-1">The following acronyms are used throughout this document:<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-2.1-2">
-          <dt id="section-2.1-2.1">SHB:</dt>
+          <dt id="section-2.1-2.1">
+SHB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.2">
-  Section Header Block<a href="#section-2.1-2.2" class="pilcrow">¶</a>
+            <p id="section-2.1-2.2.1">Section Header Block<a href="#section-2.1-2.2.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.1-2.3">IDB:</dt>
+<dt id="section-2.1-2.3">
+IDB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.4">
-  Interface Description Block<a href="#section-2.1-2.4" class="pilcrow">¶</a>
+            <p id="section-2.1-2.4.1">Interface Description Block<a href="#section-2.1-2.4.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.1-2.5">ISB:</dt>
+<dt id="section-2.1-2.5">
+ISB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.6">
-  Interface Statistics Block<a href="#section-2.1-2.6" class="pilcrow">¶</a>
+            <p id="section-2.1-2.6.1">Interface Statistics Block<a href="#section-2.1-2.6.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.1-2.7">EPB:</dt>
+<dt id="section-2.1-2.7">
+EPB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.8">
-  Enhanced Packet Block<a href="#section-2.1-2.8" class="pilcrow">¶</a>
+            <p id="section-2.1-2.8.1">Enhanced Packet Block<a href="#section-2.1-2.8.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.1-2.9">SPB:</dt>
+<dt id="section-2.1-2.9">
+SPB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.10">
-  Simple Packet Block<a href="#section-2.1-2.10" class="pilcrow">¶</a>
+            <p id="section-2.1-2.10.1">Simple Packet Block<a href="#section-2.1-2.10.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.1-2.11">NRB:</dt>
+<dt id="section-2.1-2.11">
+NRB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.12">
-  Name Resolution Block<a href="#section-2.1-2.12" class="pilcrow">¶</a>
+            <p id="section-2.1-2.12.1">Name Resolution Block<a href="#section-2.1-2.12.1" class="pilcrow">¶</a></p>
 </dd>
           <dd class="break"></dd>
-<dt id="section-2.1-2.13">CB:</dt>
+<dt id="section-2.1-2.13">
+CB:  </dt>
           <dd style="margin-left: 1.5em" id="section-2.1-2.14">
-  Custom Block<a href="#section-2.1-2.14" class="pilcrow">¶</a>
+            <p id="section-2.1-2.14.1">Custom Block<a href="#section-2.1-2.14.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1613,36 +1642,36 @@ the option list had an opt_endofopt option at the end.<a href="#section-3.5-9" c
           </tbody>
         </table>
 </div>
-<span class="break"></span><dl class="dlNewline" id="section-3.5-14">
-          <dt id="section-3.5-14.1">opt_endofopt:</dt>
-          <dd style="margin-left: 4.0em" id="section-3.5-14.2">
-  The
+<span class="break"></span><dl class="dlParallel" id="section-3.5-14">
+          <dt id="section-3.5-14.1">
+opt_endofopt:  </dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-14.2">
+            <p id="section-3.5-14.2.1">The
 opt_endofopt option delimits the end of the optional fields. This
-option MUST NOT be repeated within a given list of options.<a href="#section-3.5-14.2" class="pilcrow">¶</a>
+option MUST NOT be repeated within a given list of options.<a href="#section-3.5-14.2.1" class="pilcrow">¶</a></p>
 </dd>
-        <dd class="break"></dd>
-</dl>
-<span class="break"></span><dl class="dlNewline" id="section-3.5-15">
-          <dt id="section-3.5-15.1">opt_comment:</dt>
-          <dd style="margin-left: 4.0em" id="section-3.5-15.2">
-  The
+          <dd class="break"></dd>
+<dt id="section-3.5-14.3">
+opt_comment:  </dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-14.4">
+            <p id="section-3.5-14.4.1">The
 opt_comment option is a UTF-8 string containing human-readable
 comment text that is associated to the current block. Line
 separators SHOULD be a carriage-return + linefeed ('\r\n') or just
 linefeed ('\n'); either form may appear and be considered a line
-separator. The string is not zero-terminated.<a href="#section-3.5-15.2" class="pilcrow">¶</a>
+separator. The string is not zero-terminated.<a href="#section-3.5-14.4.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-3.5-16">Examples: "This packet is the beginning of all of our
+<p id="section-3.5-15">Examples: "This packet is the beginning of all of our
 problems", "Packets 17-23 showing a bogus TCP retransmission!\r\n
 This is reported in bugzilla entry 1486.\nIt will be fixed in the
-future.".<a href="#section-3.5-16" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-3.5-17">
-          <dt id="section-3.5-17.1">opt_custom:</dt>
-          <dd style="margin-left: 4.0em" id="section-3.5-17.2">
-  This option is
-described in detail in <a href="#section_custom_option" class="xref">Section 3.5.1</a>.<a href="#section-3.5-17.2" class="pilcrow">¶</a>
+future.".<a href="#section-3.5-15" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlParallel" id="section-3.5-16">
+          <dt id="section-3.5-16.1">
+opt_custom:  </dt>
+          <dd style="margin-left: 1.5em" id="section-3.5-16.2">
+            <p id="section-3.5-16.2.1">This option is described in detail in <a href="#section_custom_option" class="xref">Section 3.5.1</a>.<a href="#section-3.5-16.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1684,48 +1713,52 @@ Numbers, may be used in the same pcapng file. See <a href="#section_vendor" clas
               <p id="section-3.5.1-4.1.1">Custom Option Code: The code number for the Custom Option, which
 can be one of the following decimal numbers:<a href="#section-3.5.1-4.1.1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-3.5.1-4.1.2">
-                <dt id="section-3.5.1-4.1.2.1">2988:</dt>
-                <dd style="margin-left: 4.0em" id="section-3.5.1-4.1.2.2">
-      This option code
+                <dt id="section-3.5.1-4.1.2.1">
+2988:      </dt>
+                <dd style="margin-left: 1.5em" id="section-3.5.1-4.1.2.2">
+                  <p id="section-3.5.1-4.1.2.2.1">This option code
 identifies a Custom Option containing a UTF-8 string in the
 Custom Data portion.  The string is not zero-terminated.
   This Custom Option can be safely copied to a new file if
 the pcapng file is manipulated by an application; otherwise
-19372 should be used instead. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for details.<a href="#section-3.5.1-4.1.2.2" class="pilcrow">¶</a>
+19372 should be used instead. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for details.<a href="#section-3.5.1-4.1.2.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 <span class="break"></span><dl class="dlNewline" id="section-3.5.1-4.1.3">
-                <dt id="section-3.5.1-4.1.3.1">2989:</dt>
-                <dd style="margin-left: 4.0em" id="section-3.5.1-4.1.3.2">
-      This option code
+                <dt id="section-3.5.1-4.1.3.1">
+2989:      </dt>
+                <dd style="margin-left: 1.5em" id="section-3.5.1-4.1.3.2">
+                  <p id="section-3.5.1-4.1.3.2.1">This option code
 identifies a Custom Option containing binary octets in the
 Custom Data portion. This Custom Option can be safely copied
 to a new file if the pcapng file is manipulated by an
-application; otherwise 19372 should be used instead. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for details.<a href="#section-3.5.1-4.1.3.2" class="pilcrow">¶</a>
+application; otherwise 19372 should be used instead. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for details.<a href="#section-3.5.1-4.1.3.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 <span class="break"></span><dl class="dlNewline" id="section-3.5.1-4.1.4">
-                <dt id="section-3.5.1-4.1.4.1">19372:</dt>
-                <dd style="margin-left: 4.0em" id="section-3.5.1-4.1.4.2">
-      This option code
+                <dt id="section-3.5.1-4.1.4.1">
+19372:      </dt>
+                <dd style="margin-left: 1.5em" id="section-3.5.1-4.1.4.2">
+                  <p id="section-3.5.1-4.1.4.2.1">This option code
 identifies a Custom Option containing a UTF-8 string in the
 Custom Data portion.  The string is not zero-terminated.
 This Custom Option should not be copied to a new file if
-the pcapng file is manipulated by an application. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for details.<a href="#section-3.5.1-4.1.4.2" class="pilcrow">¶</a>
+the pcapng file is manipulated by an application. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for details.<a href="#section-3.5.1-4.1.4.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
 <span class="break"></span><dl class="dlNewline" id="section-3.5.1-4.1.5">
-                <dt id="section-3.5.1-4.1.5.1">19373:</dt>
-                <dd style="margin-left: 4.0em" id="section-3.5.1-4.1.5.2">
-      This option code
+                <dt id="section-3.5.1-4.1.5.1">
+19373:      </dt>
+                <dd style="margin-left: 1.5em" id="section-3.5.1-4.1.5.2">
+                  <p id="section-3.5.1-4.1.5.2.1">This option code
 identifies a Custom Option containing binary octets in the
 Custom Data portion. This Custom Option should not be copied
 to a new file if the pcapng file is manipulated by an
 application. See <a href="#section_vendor_copy" class="xref">Section 6.2</a> for
-details.<a href="#section-3.5.1-4.1.5.2" class="pilcrow">¶</a>
+details.<a href="#section-3.5.1-4.1.5.2.1" class="pilcrow">¶</a></p>
 </dd>
               <dd class="break"></dd>
 </dl>
@@ -1958,33 +1991,36 @@ following options are valid within this block:<a href="#section-4.1-6" class="pi
         </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-4.1-8">
-          <dt id="section-4.1-8.1">shb_hardware:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.1-8.2">
-  The
+          <dt id="section-4.1-8.1">
+shb_hardware:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-8.2">
+            <p id="section-4.1-8.2.1">The
 shb_hardware option is a UTF-8 string containing the description
 of the hardware used to create this section. The string is
-not zero-terminated.<a href="#section-4.1-8.2" class="pilcrow">¶</a>
+not zero-terminated.<a href="#section-4.1-8.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.1-9">Examples: "x86 Personal Computer", "Sun Sparc Workstation".<a href="#section-4.1-9" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.1-10">
-          <dt id="section-4.1-10.1">shb_os:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.1-10.2">
-  The shb_os option
+          <dt id="section-4.1-10.1">
+shb_os:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-10.2">
+            <p id="section-4.1-10.2.1">The shb_os option
 is a UTF-8 string containing the name of the operating system used
-to create this section. The string is not zero-terminated.<a href="#section-4.1-10.2" class="pilcrow">¶</a>
+to create this section. The string is not zero-terminated.<a href="#section-4.1-10.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.1-11">Examples: "Windows XP SP2", "openSUSE 10.2".<a href="#section-4.1-11" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.1-12">
-          <dt id="section-4.1-12.1">shb_userappl:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.1-12.2">
-  The
+          <dt id="section-4.1-12.1">
+shb_userappl:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-12.2">
+            <p id="section-4.1-12.2.1">The
 shb_userappl option is a UTF-8 string containing the name of the
 application used to create this section. The string is not
-zero-terminated.<a href="#section-4.1-12.2" class="pilcrow">¶</a>
+zero-terminated.<a href="#section-4.1-12.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2192,31 +2228,34 @@ the following options are valid within this block:<a href="#section-4.2-8" class
         </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-10">
-          <dt id="section-4.2-10.1">if_name:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-10.2">
-  The if_name option
+          <dt id="section-4.2-10.1">
+if_name:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-10.2">
+            <p id="section-4.2-10.2.1">The if_name option
 is a UTF-8 string containing the name of the device used to
-capture data. The string is not zero-terminated.<a href="#section-4.2-10.2" class="pilcrow">¶</a>
+capture data. The string is not zero-terminated.<a href="#section-4.2-10.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-11">Examples: "eth0", "\Device\NPF_{AD1CE675-96D0-47C5-ADD0-2504B9126B68}".<a href="#section-4.2-11" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-12">
-          <dt id="section-4.2-12.1">if_description:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-12.2">
-  The
+          <dt id="section-4.2-12.1">
+if_description:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-12.2">
+            <p id="section-4.2-12.2.1">The
 if_description option is a UTF-8 string containing the description
 of the device used to capture data. The string is not
-zero-terminated.<a href="#section-4.2-12.2" class="pilcrow">¶</a>
+zero-terminated.<a href="#section-4.2-12.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-13">Examples: "Wi-Fi", "Local Area Connection", "Wireless
 Network Connection", "First Ethernet Interface".<a href="#section-4.2-13" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-14">
-          <dt id="section-4.2-14.1">if_IPv4addr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-14.2">
-  The if_IPv4addr
+          <dt id="section-4.2-14.1">
+if_IPv4addr:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-14.2">
+            <p id="section-4.2-14.2.1">The if_IPv4addr
 option is an IPv4 network address and corresponding netmask for
 the interface. The first four octets are the IP address, and
 the next four octets are the netmask. This option can be repeated
@@ -2225,21 +2264,22 @@ multiple IPv4 addresses are assigned to the interface. Note that
 the IP address and netmask are both treated as four octets, one
 for each octet of the address or mask; they are not 32-bit
 numbers, and thus the endianness of the SHB does not affect
-this field's value.<a href="#section-4.2-14.2" class="pilcrow">¶</a>
+this field's value.<a href="#section-4.2-14.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-15">Examples: '192 168 1 1 255 255 255 0'.<a href="#section-4.2-15" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-16">
-          <dt id="section-4.2-16.1">if_IPv6addr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-16.2">
-  The
+          <dt id="section-4.2-16.1">
+if_IPv6addr:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-16.2">
+            <p id="section-4.2-16.2.1">The
 if_IPv6addr option is an IPv6 network address and corresponding
 prefix length for the interface. The first 16 octets are the
 IP address and the next octet is the prefix length. This option
 can be repeated multiple times within the same Interface
 Description Block when multiple IPv6 addresses are assigned to
-the interface.<a href="#section-4.2-16.2" class="pilcrow">¶</a>
+the interface.<a href="#section-4.2-16.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2247,39 +2287,43 @@ the interface.<a href="#section-4.2-16.2" class="pilcrow">¶</a>
 (in hex) as '20 01 0d b8 85 a3 08 d3 13 19 8a 2e 03 70 73 44
 40'.<a href="#section-4.2-17" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-18">
-          <dt id="section-4.2-18.1">if_MACaddr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-18.2">
-  The if_MACaddr
+          <dt id="section-4.2-18.1">
+if_MACaddr:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-18.2">
+            <p id="section-4.2-18.2.1">The if_MACaddr
 option is the Interface Hardware MAC address (48 bits), if
-available.<a href="#section-4.2-18.2" class="pilcrow">¶</a>
+available.<a href="#section-4.2-18.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-19">Example: '00 01 02 03 04 05'.<a href="#section-4.2-19" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-20">
-          <dt id="section-4.2-20.1">if_EUIaddr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-20.2">
-  The if_EUIaddr
+          <dt id="section-4.2-20.1">
+if_EUIaddr:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-20.2">
+            <p id="section-4.2-20.2.1">The if_EUIaddr
 option is the Interface Hardware EUI address (64 bits), if
-available.<a href="#section-4.2-20.2" class="pilcrow">¶</a>
+available.<a href="#section-4.2-20.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-21">Example: '02 34 56 FF FE 78 9A BC'.<a href="#section-4.2-21" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-22">
-          <dt id="section-4.2-22.1">if_speed:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-22.2">
-  The if_speed
+          <dt id="section-4.2-22.1">
+if_speed:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-22.2">
+            <p id="section-4.2-22.2.1">The if_speed
 option is a 64-bit unsigned value indicating the interface
-speed, in bits per second.<a href="#section-4.2-22.2" class="pilcrow">¶</a>
+speed, in bits per second.<a href="#section-4.2-22.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-23">Example: the 64-bit decimal number 100000000 for 100Mbps.<a href="#section-4.2-23" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-24">
-          <dt id="section-4.2-24.1">if_tsresol:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-24.2">
-  The if_tsresol
+          <dt id="section-4.2-24.1">
+if_tsresol:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-24.2">
+            <p id="section-4.2-24.2.1">The if_tsresol
 option identifies the resolution of timestamps. If the Most
 Significant Bit is equal to zero, the remaining bits indicates the
 resolution of the timestamp as a negative power of 10 (e.g. 6
@@ -2289,67 +2333,72 @@ Significant Bit is equal to one, the remaining bits indicates
 the resolution as negative power of 2 (e.g. 10 means 1/1024
 of second). If this option is not present, a resolution of
 10^-6 is assumed (i.e. timestamps have the same resolution of
-the standard 'libpcap' timestamps).<a href="#section-4.2-24.2" class="pilcrow">¶</a>
+the standard 'libpcap' timestamps).<a href="#section-4.2-24.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-25">Example: '6'.<a href="#section-4.2-25" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-26">
-          <dt id="section-4.2-26.1">if_tzone:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-26.2">
-  The if_tzone
+          <dt id="section-4.2-26.1">
+if_tzone:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-26.2">
+            <p id="section-4.2-26.2.1">The if_tzone
 option identifies the time zone for GMT support (TODO: specify
-better).<a href="#section-4.2-26.2" class="pilcrow">¶</a>
+better).<a href="#section-4.2-26.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-27">Example: TODO: give a good example.<a href="#section-4.2-27" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-28">
-          <dt id="section-4.2-28.1">if_filter:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-28.2">
-  The if_filter
+          <dt id="section-4.2-28.1">
+if_filter:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-28.2">
+            <p id="section-4.2-28.2.1">The if_filter
 option identifies the filter (e.g. "capture only TCP traffic")
 used to capture traffic. The first octet of the Option Data keeps a
 code of the filter used (e.g. if this is a libpcap string, or BPF
 bytecode, and more). More details about this format will be
 presented in Appendix XXX (TODO). (TODO: better use different
 options for different fields? e.g. if_filter_pcap, if_filter_bpf,
-...)<a href="#section-4.2-28.2" class="pilcrow">¶</a>
+...)<a href="#section-4.2-28.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-29">Example: '00'"tcp port 23 and host 192.0.2.5".<a href="#section-4.2-29" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-30">
-          <dt id="section-4.2-30.1">if_os:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-30.2">
-  The if_os option is
+          <dt id="section-4.2-30.1">
+if_os:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-30.2">
+            <p id="section-4.2-30.2.1">The if_os option is
 a UTF-8 string containing the name of the operating system of the
 machine in which this interface is installed. This can be
 different from the same information that can be contained by the
 Section Header Block (<a href="#section_shb" class="xref">Section 4.1</a>) because the
 capture can have been done on a remote machine. The string is
-not zero-terminated.<a href="#section-4.2-30.2" class="pilcrow">¶</a>
+not zero-terminated.<a href="#section-4.2-30.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-31">Examples: "Windows XP SP2", "openSUSE 10.2".<a href="#section-4.2-31" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-32">
-          <dt id="section-4.2-32.1">if_fcslen:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-32.2">
-  The if_fcslen
+          <dt id="section-4.2-32.1">
+if_fcslen:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-32.2">
+            <p id="section-4.2-32.2.1">The if_fcslen
 option is an 8-bit unsigned integer value that specifies the
 length of the Frame Check Sequence (in bits) for this interface.
 For link layers whose FCS length can change during time, the
 Enhanced Packet Block epb_flags Option can be used in each
-Enhanced Packet Block (see <a href="#section_epb_flags" class="xref">Section 4.3.1</a>).<a href="#section-4.2-32.2" class="pilcrow">¶</a>
+Enhanced Packet Block (see <a href="#section_epb_flags" class="xref">Section 4.3.1</a>).<a href="#section-4.2-32.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-33">Example: '4'.<a href="#section-4.2-33" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-34">
-          <dt id="section-4.2-34.1">if_tsoffset:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-34.2">
-  The
+          <dt id="section-4.2-34.1">
+if_tsoffset:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-34.2">
+            <p id="section-4.2-34.2.1">The
 if_tsoffset option is a 64-bit signed integer value that
 specifies an offset (in seconds) that must be added to the
 timestamp of each packet to obtain the absolute timestamp of
@@ -2358,17 +2407,18 @@ in the packet MUST be considered absolute timestamps.  The
 time zone of the offset can be specified with the option
 if_tzone. TODO: won't a if_tsoffset_low for fractional
 second offsets be useful for highly synchronized capture
-systems?<a href="#section-4.2-34.2" class="pilcrow">¶</a>
+systems?<a href="#section-4.2-34.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-35">Example: '1234'.<a href="#section-4.2-35" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-36">
-          <dt id="section-4.2-36.1">if_hardware:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-36.2">
-  The
+          <dt id="section-4.2-36.1">
+if_hardware:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-36.2">
+            <p id="section-4.2-36.2.1">The
 if_hardware option is a UTF-8 string containing the description
-of the interface hardware. The string is not zero-terminated.<a href="#section-4.2-36.2" class="pilcrow">¶</a>
+of the interface hardware. The string is not zero-terminated.<a href="#section-4.2-36.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2376,24 +2426,26 @@ of the interface hardware. The string is not zero-terminated.<a href="#section-4
 Network Connection", "NETGEAR WNA1000Mv2 N150 Wireless USB
 Micro Adapter".<a href="#section-4.2-37" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-38">
-          <dt id="section-4.2-38.1">if_txspeed:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-38.2">
-  The
+          <dt id="section-4.2-38.1">
+if_txspeed:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-38.2">
+            <p id="section-4.2-38.2.1">The
 if_txrxspeeds option is a 64-bit unsigned value
 indicating the interface transmit speed in bits per
-second.<a href="#section-4.2-38.2" class="pilcrow">¶</a>
+second.<a href="#section-4.2-38.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.2-39">Example: the 64-bit decimal number 1024000 for
 1024Kbps.<a href="#section-4.2-39" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.2-40">
-          <dt id="section-4.2-40.1">if_rxspeed:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-40.2">
-  The
+          <dt id="section-4.2-40.1">
+if_rxspeed:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.2-40.2">
+            <p id="section-4.2-40.2.1">The
 if_rxspeed option is a 64-bit unsigned value
 indicating the interface receive speed, in bits per
-second.<a href="#section-4.2-40.2" class="pilcrow">¶</a>
+second.<a href="#section-4.2-40.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2581,19 +2633,21 @@ the following options are valid within this block:<a href="#section-4.3-7" class
         </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-4.3-9">
-          <dt id="section-4.3-9.1">epb_flags:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.3-9.2">
-  The epb_flags
+          <dt id="section-4.3-9.1">
+epb_flags:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-9.2">
+            <p id="section-4.3-9.2.1">The epb_flags
 option is a 32-bit flags word containing link-layer information. A
-complete specification of the allowed flags can be found in <a href="#section_epb_flags" class="xref">Section 4.3.1</a>.<a href="#section-4.3-9.2" class="pilcrow">¶</a>
+complete specification of the allowed flags can be found in <a href="#section_epb_flags" class="xref">Section 4.3.1</a>.<a href="#section-4.3-9.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.3-10">Example: '0'.<a href="#section-4.3-10" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.3-11">
-          <dt id="section-4.3-11.1">epb_hash:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.3-11.2">
-  The epb_hash
+          <dt id="section-4.3-11.1">
+epb_hash:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-11.2">
+            <p id="section-4.3-11.2.1">The epb_hash
 option contains a hash of the packet. The first octet specifies the
 hashing algorithm, while the following octets contain the actual
 hash, whose size depends on the hashing algorithm, and hence from
@@ -2606,30 +2660,32 @@ only the packet, not the header added by the capture driver: this
 gives the possibility to calculate it inside the network card. The
 hash allows easier comparison/merging of different capture files,
 and reliable data transfer between the data acquisition system and
-the capture library.<a href="#section-4.3-11.2" class="pilcrow">¶</a>
+the capture library.<a href="#section-4.3-11.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.3-12">Examples: '02 EC 1D 87 97', '03 45 6E C2 17 7C 10 1E 3C 2E 99 6E C2 9A 3D
 50 8E'.<a href="#section-4.3-12" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.3-13">
-          <dt id="section-4.3-13.1">epb_dropcount:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.3-13.2">
-  The
+          <dt id="section-4.3-13.1">
+epb_dropcount:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-13.2">
+            <p id="section-4.3-13.2.1">The
 epb_dropcount option is a 64-bit unsigned integer value
 specifying the number of packets lost (by the interface and
 the operating system) between this packet and the preceding
 one for the same interface or, for the first packet for an
 interface, between this packet and the start of the capture
-process.<a href="#section-4.3-13.2" class="pilcrow">¶</a>
+process.<a href="#section-4.3-13.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.3-14">Example: '0'.<a href="#section-4.3-14" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.3-15">
-          <dt id="section-4.3-15.1">epb_packetid:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.3-15.2">
-  The
+          <dt id="section-4.3-15.1">
+epb_packetid:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-15.2">
+            <p id="section-4.3-15.2.1">The
 epb_packetid option is a 64-bit unsigned integer that uniquely
 identifies the packet. If the same packet is seen by multiple
 interfaces and there is a way for the capture application to
@@ -2640,25 +2696,27 @@ on ingress, an EPB entry gets created, TTL gets decremented,
 and right before it egresses on interface B another EPB entry
 gets created in the trace file. In this case, two packets are
 in the capture file, which are not identical but the
-epb_packetid can be used to correlate them.<a href="#section-4.3-15.2" class="pilcrow">¶</a>
+epb_packetid can be used to correlate them.<a href="#section-4.3-15.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.3-16">Example: '0'.<a href="#section-4.3-16" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.3-17">
-          <dt id="section-4.3-17.1">epb_queue:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.3-17.2">
-  The epb_queue
+          <dt id="section-4.3-17.1">
+epb_queue:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-17.2">
+            <p id="section-4.3-17.2.1">The epb_queue
 option is a 32-bit unsigned integer that identifies on which queue
-of the interface the specific packet was received.<a href="#section-4.3-17.2" class="pilcrow">¶</a>
+of the interface the specific packet was received.<a href="#section-4.3-17.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.3-18">Example: '0'.<a href="#section-4.3-18" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.3-19">
-          <dt id="section-4.3-19.1">epb_verdict:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.3-19.2">
-  The epb_verdict
+          <dt id="section-4.3-19.1">
+epb_verdict:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.3-19.2">
+            <p id="section-4.3-19.2.1">The epb_verdict
 option stores a verdict of the packet. The verdict indicates what
 would be done with the packet after processing it. For example, a
 firewall could drop the packet. This verdict can be set by various
@@ -2669,7 +2727,7 @@ depends on the verdict type, and hence from the value in the first
 octet. The verdict type can be: Hardware (type octet = 0, size =
 variable), Linux_eBPF_TC (type octet = 1, size = 8 (64-bit unsigned
 integer), value = TC_ACT_* as defined in the Linux <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/pkt_cls.h">pck_cls.h</a> include), Linux_eBPF_XDP (type octet = 2, size = 8 (64-bit unsigned
-integer), value = xdp_action as defined in the Linux <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/bpf.h">pbf.h</a> include).<a href="#section-4.3-19.2" class="pilcrow">¶</a>
+integer), value = xdp_action as defined in the Linux <a href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/uapi/linux/bpf.h">pbf.h</a> include).<a href="#section-4.3-19.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2926,19 +2984,21 @@ There are currently three possible types of records:<a href="#section-4.5-8" cla
         </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-4.5-10">
-          <dt id="section-4.5-10.1">nrb_record_end:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.5-10.2">
-  The
+          <dt id="section-4.5-10.1">
+nrb_record_end:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.5-10.2">
+            <p id="section-4.5-10.2.1">The
 nrb_record_end record delimits the end of name resolution
 records. This record is needed to determine when the list of name
-resolution records has ended and some options (if any) begin.<a href="#section-4.5-10.2" class="pilcrow">¶</a>
+resolution records has ended and some options (if any) begin.<a href="#section-4.5-10.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <span class="break"></span><dl class="dlNewline" id="section-4.5-11">
-          <dt id="section-4.5-11.1">nrb_record_ipv4:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.5-11.2">
-  The
+          <dt id="section-4.5-11.1">
+nrb_record_ipv4:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.5-11.2">
+            <p id="section-4.5-11.2.1">The
 nrb_record_ipv4 record specifies an IPv4 address (contained in the
 first 4 octets), followed by one or more zero-terminated UTF-8
 strings containing the DNS entries for that address. The minimum
@@ -2946,7 +3006,7 @@ valid Record Length for this Record Type is thus 6: 4 for the IP
 octets, 1 character, and a zero-value octet terminator. Note that
 the IP address is treated as four octets, one for each octet of
 the IP address; it is not a 32-bit word, and thus the endianness
-of the SHB does not affect this field's value.<a href="#section-4.5-11.2" class="pilcrow">¶</a>
+of the SHB does not affect this field's value.<a href="#section-4.5-11.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -2954,14 +3014,15 @@ of the SHB does not affect this field's value.<a href="#section-4.5-11.2" class=
 <p id="section-4.5-13">[Open issue: is an empty string (i.e., just a zero-value octet)
 valid?]<a href="#section-4.5-13" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.5-14">
-          <dt id="section-4.5-14.1">nrb_record_ipv6:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.5-14.2">
-  The
+          <dt id="section-4.5-14.1">
+nrb_record_ipv6:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.5-14.2">
+            <p id="section-4.5-14.2.1">The
 nrb_record_ipv6 record specifies an IPv6 address (contained in the
 first 16 octets), followed by one or more zero-terminated strings
 containing the DNS entries for that address. The minimum valid
 Record Length for this Record Type is thus 18: 16 for the IP
-octets, 1 character, and a zero-value octet terminator.<a href="#section-4.5-14.2" class="pilcrow">¶</a>
+octets, 1 character, and a zero-value octet terminator.<a href="#section-4.5-14.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -3021,34 +3082,37 @@ the following options are valid within this block:<a href="#section-4.5-20" clas
         </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-4.5-22">
-          <dt id="section-4.5-22.1">ns_dnsname:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.5-22.2">
-  The ns_dnsname
+          <dt id="section-4.5-22.1">
+ns_dnsname:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.5-22.2">
+            <p id="section-4.5-22.2.1">The ns_dnsname
 option is a UTF-8 string containing the name of the machine (DNS
 server) used to perform the name resolution. The string is not
-zero-terminated.<a href="#section-4.5-22.2" class="pilcrow">¶</a>
+zero-terminated.<a href="#section-4.5-22.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.5-23">Example: "our_nameserver".<a href="#section-4.5-23" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.5-24">
-          <dt id="section-4.5-24.1">ns_dnsIP4addr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.5-24.2">
-  The
+          <dt id="section-4.5-24.1">
+ns_dnsIP4addr:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.5-24.2">
+            <p id="section-4.5-24.2.1">The
 ns_dnsIP4addr option specifies the IPv4 address of the DNS server.
 Note that the IP address is treated as four octets, one for each
 octet of the IP address; it is not a 32-bit word, and thus the
-endianness of the SHB does not affect this field's value.<a href="#section-4.5-24.2" class="pilcrow">¶</a>
+endianness of the SHB does not affect this field's value.<a href="#section-4.5-24.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.5-25">Example: '192 168 0 1'.<a href="#section-4.5-25" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.5-26">
-          <dt id="section-4.5-26.1">ns_dnsIP6addr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.5-26.2">
-  The
+          <dt id="section-4.5-26.1">
+ns_dnsIP6addr:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.5-26.2">
+            <p id="section-4.5-26.2.1">The
 ns_dnsIP6addr option specifies the IPv6 address of the DNS
-server.<a href="#section-4.5-26.2" class="pilcrow">¶</a>
+server.<a href="#section-4.5-26.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -3185,88 +3249,95 @@ the following options are valid within this block:<a href="#section-4.6-6" class
         </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-8">
-          <dt id="section-4.6-8.1">isb_starttime:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-8.2">
-  The
+          <dt id="section-4.6-8.1">
+isb_starttime:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-8.2">
+            <p id="section-4.6-8.2.1">The
 isb_starttime option specifies the time the capture started; time
 will be stored in two blocks of four octets each. The format of the
 timestamp is the same as the one defined in the Enhanced Packet
 Block (<a href="#section_epb" class="xref">Section 4.3</a>); the length of a unit
 of time is specified by the 'if_tsresol' option (see <a href="#format_idb" class="xref">Figure 10</a>) of the Interface Description Block
-referenced by this packet.<a href="#section-4.6-8.2" class="pilcrow">¶</a>
+referenced by this packet.<a href="#section-4.6-8.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.6-9">Example: '96 c3 04 00 73 89 6a 65', in Little Endian, decodes
 to 2012-06-29 06:17:00.834163 UTC.<a href="#section-4.6-9" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-10">
-          <dt id="section-4.6-10.1">isb_endtime:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-10.2">
-  The isb_endtime
+          <dt id="section-4.6-10.1">
+isb_endtime:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-10.2">
+            <p id="section-4.6-10.2.1">The isb_endtime
 option specifies the time the capture ended; time will be stored
 in two blocks of four octets each. The format of the timestamp is
 the same as the one defined in the Enhanced Packet Block (<a href="#section_epb" class="xref">Section 4.3</a>); the length of a unit of time is specified
 by the 'if_tsresol' option (see <a href="#format_idb" class="xref">Figure 10</a>) of
-the Interface Description Block referenced by this packet.<a href="#section-4.6-10.2" class="pilcrow">¶</a>
+the Interface Description Block referenced by this packet.<a href="#section-4.6-10.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.6-11">Example: '97 c3 04 00 aa 47 ca 64', in Little Endian, decodes
 to 2012-06-29 07:28:25.298858 UTC.<a href="#section-4.6-11" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-12">
-          <dt id="section-4.6-12.1">isb_ifrecv:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-12.2">
-  The isb_ifrecv
+          <dt id="section-4.6-12.1">
+isb_ifrecv:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-12.2">
+            <p id="section-4.6-12.2.1">The isb_ifrecv
 option specifies the 64-bit unsigned integer number of packets
 received from the physical interface starting from the beginning
-of the capture.<a href="#section-4.6-12.2" class="pilcrow">¶</a>
+of the capture.<a href="#section-4.6-12.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.6-13">Example: the decimal number 100.<a href="#section-4.6-13" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-14">
-          <dt id="section-4.6-14.1">isb_ifdrop:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-14.2">
-  The isb_ifdrop
+          <dt id="section-4.6-14.1">
+isb_ifdrop:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-14.2">
+            <p id="section-4.6-14.2.1">The isb_ifdrop
 option specifies the 64-bit unsigned integer number of packets
 dropped by the interface due to lack of resources starting from
-the beginning of the capture.<a href="#section-4.6-14.2" class="pilcrow">¶</a>
+the beginning of the capture.<a href="#section-4.6-14.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.6-15">Example: '0'.<a href="#section-4.6-15" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-16">
-          <dt id="section-4.6-16.1">isb_filteraccept:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-16.2">
-  The
+          <dt id="section-4.6-16.1">
+isb_filteraccept:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-16.2">
+            <p id="section-4.6-16.2.1">The
 isb_filteraccept option specifies the 64-bit unsigned integer
 number of packets accepted by filter starting from the beginning
-of the capture.<a href="#section-4.6-16.2" class="pilcrow">¶</a>
+of the capture.<a href="#section-4.6-16.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.6-17">Example: the decimal number 100.<a href="#section-4.6-17" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-18">
-          <dt id="section-4.6-18.1">isb_osdrop:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-18.2">
-  The isb_osdrop
+          <dt id="section-4.6-18.1">
+isb_osdrop:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-18.2">
+            <p id="section-4.6-18.2.1">The isb_osdrop
 option specifies the 64-bit unsigned integer number of packets
 dropped by the operating system starting from the beginning of the
-capture.<a href="#section-4.6-18.2" class="pilcrow">¶</a>
+capture.<a href="#section-4.6-18.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <p id="section-4.6-19">Example: '0'.<a href="#section-4.6-19" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.6-20">
-          <dt id="section-4.6-20.1">isb_usrdeliv:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.6-20.2">
-  The
+          <dt id="section-4.6-20.1">
+isb_usrdeliv:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.6-20.2">
+            <p id="section-4.6-20.2.1">The
 isb_usrdeliv option specifies the 64-bit unsigned integer number
 of packets delivered to the user starting from the beginning of
 the capture. The value contained in this field can be different
 from the value 'isb_filteraccept - isb_osdrop' because some
 packets could still be in the OS buffers when the capture
-ended.<a href="#section-4.6-20.2" class="pilcrow">¶</a>
+ended.<a href="#section-4.6-20.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -3416,19 +3487,21 @@ No DSB-specific options are currently defined.<a href="#section-4.8-6.6" class="
         </ul>
 <p id="section-4.8-7">The following is a list of Secrets Types.<a href="#section-4.8-7" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.8-8">
-          <dt id="section-4.8-8.1">0x544c534b:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.8-8.2">
-  TLS Key Log. This
+          <dt id="section-4.8-8.1">
+0x544c534b:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.8-8.2">
+            <p id="section-4.8-8.2.1">TLS Key Log. This
 format is described at <a href="https://developer.mozilla.org/NSS_Key_Log_Format">NSS Key Log Format</a>. Every line MUST be properly terminated with
 either carriage return and linefeed ('\r\n') or linefeed ('\n').
-Tools MUST be able to handle both line endings.<a href="#section-4.8-8.2" class="pilcrow">¶</a>
+Tools MUST be able to handle both line endings.<a href="#section-4.8-8.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <span class="break"></span><dl class="dlNewline" id="section-4.8-9">
-          <dt id="section-4.8-9.1">0x57474b4c:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.8-9.2">
-  WireGuard Key Log.
+          <dt id="section-4.8-9.1">
+0x57474b4c:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.8-9.2">
+            <p id="section-4.8-9.2.1">WireGuard Key Log.
 Every line consists of the key type, equals sign ('='), and the
 base64-encoded 32-byte key with optional spaces before and in between.
 The key type is one of LOCAL_STATIC_PRIVATE_KEY,
@@ -3438,7 +3511,7 @@ A PRESHARED_KEY line is linked to a session matched by a previous
 LOCAL_EPHEMERAL_PRIVATE_KEY line.
 Every line MUST be properly terminated with
 either carriage return and linefeed ('\r\n') or linefeed ('\n').
-Tools MUST be able to handle both line endings.<a href="#section-4.8-9.2" class="pilcrow">¶</a>
+Tools MUST be able to handle both line endings.<a href="#section-4.8-9.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -3446,22 +3519,24 @@ Tools MUST be able to handle both line endings.<a href="#section-4.8-9.2" class=
   are long-term secrets, users SHOULD only store non-production keys,
   or ensure proper protection of the pcapng file.<a href="#section-4.8-10" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-4.8-11">
-          <dt id="section-4.8-11.1">0x5a4e574b:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.8-11.2">
-  ZigBee NWK Key
+          <dt id="section-4.8-11.1">
+0x5a4e574b:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.8-11.2">
+            <p id="section-4.8-11.2.1">ZigBee NWK Key
 and ZigBee PANID for that network. Network Key as described in
 the <a href="https://zigbeealliance.org/">ZigBee Specification</a> 05-3473-21 (R21) section 4.2.2.
 The NWK Key is a 16 octet binary AES-128 key used to secure NWK Level frames
 within a single PAN. The NWK key is immediately followed by the
 2 octet (16 bit) network PANID in little endian format. If and when
-the NWK Key changes a new DSB will contain the new NWK Key.<a href="#section-4.8-11.2" class="pilcrow">¶</a>
+the NWK Key changes a new DSB will contain the new NWK Key.<a href="#section-4.8-11.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
 <span class="break"></span><dl class="dlNewline" id="section-4.8-12">
-          <dt id="section-4.8-12.1">0x5a415053:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.8-12.2">
-  ZigBee APS Key.
+          <dt id="section-4.8-12.1">
+0x5a415053:  </dt>
+          <dd style="margin-left: 1.5em" id="section-4.8-12.2">
+            <p id="section-4.8-12.2.1">ZigBee APS Key.
 Application Support Link Key as described in the <a href="https://zigbeealliance.org/">ZigBee Specification</a> 05-3473-21 (R21) section 4.4. Each 16 octet binary AES-128 key secures
 frames exchanged between a pair of network nodes. The APS Key is
 immediately followed by the 2 octet (16 bit) network PANID in
@@ -3471,7 +3546,7 @@ the APS Key applies. The numerically lower short address shall come
 first. There is a APS Key DSB for each node pair for which the
 Link Key is known. As new links are formed, new DSBs contain the
 new Keys. If the APS Key changes for an existing link, it is
-contained in a new DSB with the new APS Key.<a href="#section-4.8-12.2" class="pilcrow">¶</a>
+contained in a new DSB with the new APS Key.<a href="#section-4.8-12.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -4414,20 +4489,22 @@ the following options were valid within this block:<a href="#section-appendix.a-
       </table>
 </div>
 <span class="break"></span><dl class="dlNewline" id="section-appendix.a-8">
-        <dt id="section-appendix.a-8.1">pack_flags:</dt>
-        <dd style="margin-left: 4.0em" id="section-appendix.a-8.2">
-  The pack_flags
+        <dt id="section-appendix.a-8.1">
+pack_flags:  </dt>
+        <dd style="margin-left: 1.5em" id="section-appendix.a-8.2">
+          <p id="section-appendix.a-8.2.1">The pack_flags
 option is the same as the epb_flags of the enhanced packet
-block.<a href="#section-appendix.a-8.2" class="pilcrow">¶</a>
+block.<a href="#section-appendix.a-8.2.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
 <p id="section-appendix.a-9">Example: '0'.<a href="#section-appendix.a-9" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlNewline" id="section-appendix.a-10">
-        <dt id="section-appendix.a-10.1">pack_hash:</dt>
-        <dd style="margin-left: 4.0em" id="section-appendix.a-10.2">
-  The pack_hash
-option is the same as the epb_hash of the enhanced packet block.<a href="#section-appendix.a-10.2" class="pilcrow">¶</a>
+        <dt id="section-appendix.a-10.1">
+pack_hash:  </dt>
+        <dd style="margin-left: 1.5em" id="section-appendix.a-10.2">
+          <p id="section-appendix.a-10.2.1">The pack_hash
+option is the same as the epb_hash of the enhanced packet block.<a href="#section-appendix.a-10.2.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
