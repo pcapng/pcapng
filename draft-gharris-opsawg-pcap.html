@@ -950,7 +950,15 @@ files in that format, include tcpdump.<a href="#section-abstract-1" class="pilcr
             <p id="section-toc.1-1.8.1"><a href="#section-8" class="xref">8</a>.  <a href="#name-iana-considerations" class="xref">IANA Considerations</a><a href="#section-toc.1-1.8.1" class="pilcrow">¶</a></p>
 <ul class="toc compact ulEmpty">
 <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.1">
-                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-linktype-registry" class="xref">LinkType Registry</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+                <p id="section-toc.1-1.8.2.1.1"><a href="#section-8.1" class="xref">8.1</a>.  <a href="#name-media-type-registry" class="xref">Media-Type Registry</a><a href="#section-toc.1-1.8.2.1.1" class="pilcrow">¶</a></p>
+<ul class="toc compact ulEmpty">
+<li class="toc compact ulEmpty" id="section-toc.1-1.8.2.1.2.1">
+                    <p id="section-toc.1-1.8.2.1.2.1.1"><a href="#section-8.1.1" class="xref">8.1.1</a>.  <a href="#name-application-pcap" class="xref">application/pcap</a><a href="#section-toc.1-1.8.2.1.2.1.1" class="pilcrow">¶</a></p>
+</li>
+                </ul>
+</li>
+              <li class="toc compact ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="xref">8.2</a>.  <a href="#name-linktype-registry" class="xref">LinkType Registry</a><a href="#section-toc.1-1.8.2.2.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
@@ -1114,7 +1122,7 @@ This value MUST NOT be zero; if no limit was specified, the value should be a nu
 LinkType (16 bits):  </dt>
         <dd style="margin-left: 1.5em" id="section-4-5.18">
           <p id="section-4-5.18.1">a 16-bit unsigned value that defines the link layer type of packets in the file.
-This field is defined in the <a href="#linktype" class="xref">Section 8.1</a> IANA registry.<a href="#section-4-5.18.1" class="pilcrow">¶</a></p>
+This field is defined in the <a href="#linktype" class="xref">Section 8.2</a> IANA registry.<a href="#section-4-5.18.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 <dt id="section-4-5.19">
@@ -1238,33 +1246,72 @@ Files of that type will usually start with a Section Header Block, with a magic 
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
 <p id="section-8-1">This document requires the following IANA actions:<a href="#section-8-1" class="pilcrow">¶</a></p>
-<div id="linktype">
+<div id="media-type-registry">
 <section id="section-8.1">
-        <h3 id="name-linktype-registry">
-<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-linktype-registry" class="section-name selfRef">LinkType Registry</a>
+        <h3 id="name-media-type-registry">
+<a href="#section-8.1" class="section-number selfRef">8.1. </a><a href="#name-media-type-registry" class="section-name selfRef">Media-Type Registry</a>
         </h3>
-<p id="section-8.1-1">IANA is requested to create a new Registry entitled: "The PCAP Registry",
-and within that Registry to create a table called: "PCAP LinkType List".<a href="#section-8.1-1" class="pilcrow">¶</a></p>
-<p id="section-8.1-2">The LinkType Registry is a table of 16-bit numbers.
-The Registry has three sections according to <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>:<a href="#section-8.1-2" class="pilcrow">¶</a></p>
+<p id="section-8.1-1">This section registers the the 'application/pcap' in the "Media Types" registry.
+These media types are used to indicate that the content is packet capture as described in this document.<a href="#section-8.1-1" class="pilcrow">¶</a></p>
+<div id="applicationpcap">
+<section id="section-8.1.1">
+          <h4 id="name-application-pcap">
+<a href="#section-8.1.1" class="section-number selfRef">8.1.1. </a><a href="#name-application-pcap" class="section-name selfRef">application/pcap</a>
+          </h4>
+<div class="artwork art-text alignLeft" id="section-8.1.1-1">
+<pre>
+    Type name:  application
+    Subtype name:  pcap
+    Required parameters:  none
+    Optional parameters:  none
+    Encoding considerations:  PCAP files contain network packets
+    Security considerations:  See Security Considerations, Section
+    Interoperability considerations:  The format is designed to be broadly interoperable.
+    Published specification:  THIS RFC.
+    Applications that use this media type: tcpdump, wireshark, others.
+    Additional information:
+      Magic number(s): 0xA1B2C3D4, and 0xA1B23C4D in both endian orders
+      File extension(s):  .pcap
+      Macintosh file type code(s):  none
+    Person &amp; email address to contact for further information: The Tcpdump Group, www.tcpdump.org
+    Intended usage:  LIMITED
+    Restrictions on usage:  NONE
+    Author:  Guy Harris and Michael Richardson
+    Change controller:  The Tcpdump Group
+    Provisional registration? (standards tree only):  NO
+</pre><a href="#section-8.1.1-1" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+</section>
+</div>
+<div id="linktype">
+<section id="section-8.2">
+        <h3 id="name-linktype-registry">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-linktype-registry" class="section-name selfRef">LinkType Registry</a>
+        </h3>
+<p id="section-8.2-1">IANA is requested to create a new Registry entitled: "The PCAP Registry",
+and within that Registry to create a table called: "PCAP LinkType List".<a href="#section-8.2-1" class="pilcrow">¶</a></p>
+<p id="section-8.2-2">The LinkType Registry is a table of 16-bit numbers.
+The Registry has three sections according to <span>[<a href="#RFC8126" class="xref">RFC8126</a>]</span>:<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-8.1-3.1">values from 0 to 32767 are marked as Specification Required.<a href="#section-8.1-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-8.2-3.1">values from 0 to 32767 are marked as Specification Required.<a href="#section-8.2-3.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-8.1-3.2">except that values 147 to 162 are reserved for Private Use<a href="#section-8.1-3.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-8.2-3.2">except that values 147 to 162 are reserved for Private Use<a href="#section-8.2-3.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-8.1-3.3">values from 32768 to 65000 are marked as First-Come First-Served.<a href="#section-8.1-3.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-8.2-3.3">values from 32768 to 65000 are marked as First-Come First-Served.<a href="#section-8.2-3.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-8.1-3.4">values from 65000 to 65536 are marked as Private Use.<a href="#section-8.1-3.4" class="pilcrow">¶</a>
+          <li class="normal" id="section-8.2-3.4">values from 65000 to 65535 are marked as Private Use.<a href="#section-8.2-3.4" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-8.1-4">The Registry has three columns: the integer value, the symbolic name (LINKTYPE_something),
-a very short description, and the document/requestor reference.<a href="#section-8.1-4" class="pilcrow">¶</a></p>
-<p id="section-8.1-5">The Registry shall be populated as follows in the table below.<a href="#section-8.1-5" class="pilcrow">¶</a></p>
-<p id="section-8.1-6">This table is base upon the Link type list maintained by libpcap, and
-published on the tcpdump.org web site as http://www.tcpdump.org/linktypes.html.<a href="#section-8.1-6" class="pilcrow">¶</a></p>
-<p id="section-8.1-7">There is often an associated DLT value which are often identical in value, but not universally so.
+<p id="section-8.2-4">The Registry has three columns: the integer value, the symbolic name (LINKTYPE_something),
+a very short description, and the document/requestor reference.<a href="#section-8.2-4" class="pilcrow">¶</a></p>
+<p id="section-8.2-5">The Registry shall be populated as follows in the table below.<a href="#section-8.2-5" class="pilcrow">¶</a></p>
+<p id="section-8.2-6">This table is base upon the Link type list maintained by libpcap, and
+published on the tcpdump.org web site as http://www.tcpdump.org/linktypes.html.<a href="#section-8.2-6" class="pilcrow">¶</a></p>
+<p id="section-8.2-7">There is often an associated DLT value which are often identical in value, but not universally so.
 DLT values are associated with specific operation system captures, and are operating system specific.
-In each case here, the reference should be http://www.tcpdump.org/linktypes.html, which is not repeated.<a href="#section-8.1-7" class="pilcrow">¶</a></p>
+In each case here, the reference should be http://www.tcpdump.org/linktypes.html, which is not repeated.<a href="#section-8.2-7" class="pilcrow">¶</a></p>
 <table class="center" id="table-1">
           <caption><a href="#table-1" class="selfRef">Table 1</a></caption>
 <thead>

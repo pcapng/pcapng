@@ -71,7 +71,9 @@ Table of Contents
    6.  Recommended File Name Extension: .pcap
    7.  Security Considerations
    8.  IANA Considerations
-     8.1.  LinkType Registry
+     8.1.  Media-Type Registry
+       8.1.1.  application/pcap
+     8.2.  LinkType Registry
    9.  Contributors
    10. Acknowledgments
    11. References
@@ -197,7 +199,7 @@ Table of Contents
 
    LinkType (16 bits):  a 16-bit unsigned value that defines the link
       layer type of packets in the file.  This field is defined in the
-      Section 8.1 IANA registry.
+      Section 8.2 IANA registry.
 
    Frame Cyclic Sequence (FCS) present (4 bits):  if the "f" bit is set,
       then the 3 FCS bits provide the number of 16-bit (2 byte) words of
@@ -298,7 +300,35 @@ Table of Contents
 
    This document requires the following IANA actions:
 
-8.1.  LinkType Registry
+8.1.  Media-Type Registry
+
+   This section registers the the 'application/pcap' in the "Media
+   Types" registry.  These media types are used to indicate that the
+   content is packet capture as described in this document.
+
+8.1.1.  application/pcap
+
+    Type name:  application
+    Subtype name:  pcap
+    Required parameters:  none
+    Optional parameters:  none
+    Encoding considerations:  PCAP files contain network packets
+    Security considerations:  See Security Considerations, Section
+    Interoperability considerations:  The format is designed to be broadly interoperable.
+    Published specification:  THIS RFC.
+    Applications that use this media type: tcpdump, wireshark, others.
+    Additional information:
+      Magic number(s): 0xA1B2C3D4, and 0xA1B23C4D in both endian orders
+      File extension(s):  .pcap
+      Macintosh file type code(s):  none
+    Person & email address to contact for further information: The Tcpdump Group, www.tcpdump.org
+    Intended usage:  LIMITED
+    Restrictions on usage:  NONE
+    Author:  Guy Harris and Michael Richardson
+    Change controller:  The Tcpdump Group
+    Provisional registration? (standards tree only):  NO
+
+8.2.  LinkType Registry
 
    IANA is requested to create a new Registry entitled: "The PCAP
    Registry", and within that Registry to create a table called: "PCAP
@@ -313,7 +343,7 @@ Table of Contents
 
    *  values from 32768 to 65000 are marked as First-Come First-Served.
 
-   *  values from 65000 to 65536 are marked as Private Use.
+   *  values from 65000 to 65535 are marked as Private Use.
 
    The Registry has three columns: the integer value, the symbolic name
    (LINKTYPE_something), a very short description, and the document/
