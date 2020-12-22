@@ -10,7 +10,7 @@ Expires: 25 June 2021                                          Sandelman
 
 
                         PCAP Capture File Format
-                      draft-gharris-opsawg-pcap-01
+                       draft-gharris-opsawg-pcap
 
 Abstract
 
