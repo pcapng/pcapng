@@ -157,7 +157,7 @@ Table of Contents
       Figure 2) are in seconds and microseconds; if it is 0xA1B23C4D,
       time stamps in Packet Records are in seconds and nanoseconds.
 
-      These numbers can be used to distinguish sections that have been
+      These numbers can be used to distinguish sessions that have been
       saved on little-endian machines from the ones saved on big-endian
       machines, and to heuristically identify pcap files.
 
@@ -345,21 +345,22 @@ Table of Contents
 
    *  values from 65000 to 65535 are marked as Private Use.
 
-   The Registry has three columns: the integer value, the symbolic name
-   (LINKTYPE_something), a very short description, and the document/
-   requestor reference.
+   The Registry has four columns: the symbolic name
+   (LINKTYPE_something), the integer value, a very short description,
+   and the document/requestor reference.
 
-   The Registry shall be populated as follows in the table below.
+   The Registry shall be populated as follows in the table below.  In
+   each case here, the reference should be http://www.tcpdump.org/
+   linktypes.html, which is not repeated.
 
-   This table is base upon the Link type list maintained by libpcap, and
-   published on the tcpdump.org web site as http://www.tcpdump.org/
-   linktypes.html.
+   The initial value of table is base upon the Link type list maintained
+   by libpcap, and published on the tcpdump.org web site as
+   http://www.tcpdump.org/linktypes.html.
 
    There is often an associated DLT value which are often identical in
    value, but not universally so.  DLT values are associated with
    specific operation system captures, and are operating system
-   specific.  In each case here, the reference should be
-   http://www.tcpdump.org/linktypes.html, which is not repeated.
+   specific.
 
    +=====================================+========+====================+
    | LINKTYPE name                       |LINKTYPE|description         |
