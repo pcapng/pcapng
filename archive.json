@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-21T22:04:03.626862+00:00",
+  "timestamp": "2020-12-22T09:04:24.443738+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -1426,7 +1426,7 @@
       "labels": [],
       "body": "Same URI two times in the generated text and pdf (not in html).\r\nShould be avoided?\r\n```\r\n11.2.  URIs\r\n\r\n   [1] http://www.tcpdump.org/linktypes.html\r\n\r\n   [2] http://www.tcpdump.org/linktypes.html\r\n```",
       "createdAt": "2020-03-27T10:59:59Z",
-      "updatedAt": "2020-03-27T19:24:06Z",
+      "updatedAt": "2020-12-21T23:04:27Z",
       "closedAt": null,
       "comments": [
         {
@@ -1456,6 +1456,20 @@
           "body": "> The generated HTML for pcapng draft has also missing URIs references like pcap one had before xref use.\r\n\r\nAs with pcap, so with pcapng; time for another pull request.",
           "createdAt": "2020-03-27T19:24:06Z",
           "updatedAt": "2020-03-27T19:24:06Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So is [the current generated HTML](https://pcapng.github.io/pcapng/draft-tuexen-opsawg-pcapng.html), as produced from extended Markdown, fixed, or does it still have those issues?",
+          "createdAt": "2020-12-21T22:52:56Z",
+          "updatedAt": "2020-12-21T22:52:56Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Guy Harris <notifications@github.com> wrote:\n    > So is [the current generated\n    > HTML](https://pcapng.github.io/pcapng/draft-tuexen-opsawg-pcapng.html),\n    > as produced from extended Markdown, fixed, or does it still have those\n    > issues?\n\nThe markdown generator has now fixed the hangIndent issue, if that's what you\nare referring to.\n\n",
+          "createdAt": "2020-12-21T23:04:27Z",
+          "updatedAt": "2020-12-21T23:04:27Z"
         }
       ]
     },
@@ -1488,15 +1502,15 @@
       "id": "MDU6SXNzdWU1OTIzNzc0MTA=",
       "title": "Stale references to old repo location mcr/pcapng",
       "url": "https://github.com/pcapng/pcapng/issues/83",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "lukem",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "There's a few stale references to https://github.com/mcr/pcapng and https://mcr.github.io/pcapng in the tree.\r\nThe former can be replaced with https://github.com/pcapng/pcapng\r\nNot sure what to do about the latter.",
       "createdAt": "2020-04-02T05:56:03Z",
-      "updatedAt": "2020-04-09T09:34:51Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T22:08:01Z",
+      "closedAt": "2020-12-21T22:08:00Z",
       "comments": [
         {
           "author": "fxlb",
@@ -1504,6 +1518,13 @@
           "body": "Partial fix with 19019ea6338099c7e75c125e789b8033dba7c62b.",
           "createdAt": "2020-04-09T09:34:51Z",
           "updatedAt": "2020-04-09T09:34:51Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Should be fixed now.\r\n",
+          "createdAt": "2020-12-21T22:08:00Z",
+          "updatedAt": "2020-12-21T22:08:00Z"
         }
       ]
     },
@@ -1574,15 +1595,15 @@
       "id": "MDU6SXNzdWU3NjgzNTY3NzY=",
       "title": "Stale document - https://pcapng.github.io/pcapng/",
       "url": "https://github.com/pcapng/pcapng/issues/97",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bubbasnmp",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Lazy googling \"pcapng file format\" returns https://pcapng.github.io/pcapng/ which is beautifully formatted and easy to read but out of date.",
       "createdAt": "2020-12-16T01:13:32Z",
-      "updatedAt": "2020-12-16T08:40:46Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T22:51:17Z",
+      "closedAt": "2020-12-21T22:51:17Z",
       "comments": [
         {
           "author": "guyharris",
@@ -1604,6 +1625,13 @@
           "body": "> There is a github webhook that can be setup to have travis/circleci update the\r\ngh-pages branch\r\n\r\n(Sigh, why did my parents give me the same initials as GitHub? :-))\r\n\r\n> which feeds the github.io.\r\n\r\nSo does that mean that the gh-pages branch of the pcapng/pcapng repository is a [\"publishing source\"](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages/about-github-pages#publishing-sources-for-github-pages-sites) for pcapng.github.io?\r\n\r\nAnd does that web hook mean that a CI run, done whenever something's committed to the pcapng/pcapng repository, would run kramdown | xml2rfc -html to generate HTML, and then commit that HTML to the gh-pages branch, or something such as that?\r\n\r\nOr does it do something else?",
           "createdAt": "2020-12-16T08:40:46Z",
           "updatedAt": "2020-12-16T08:40:46Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "OK, so @mcr has set up the webhook, and the current version of the pcapng draft is [here](https://pcapng.github.io/pcapng/draft-tuexen-opsawg-pcapng.html).",
+          "createdAt": "2020-12-21T22:51:17Z",
+          "updatedAt": "2020-12-21T22:51:17Z"
         }
       ]
     },
@@ -1612,15 +1640,15 @@
       "id": "MDU6SXNzdWU3NzI0NTUxMTI=",
       "title": "broken links from pcapng README.md",
       "url": "https://github.com/pcapng/pcapng/issues/98",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "laf0rge",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Most of the links linking to rendered versions of the draft fail:\r\n\r\n* \"Editor's Copy\" (https://mcr.github.io/pcapng/#go.draft-tuexen-opsawg-pcapng.html) is a 404\r\n* \"Current committed version as HTML\" (http://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi?url=https://raw.githubusercontent.com/pcapng/pcapng/master/draft-tuexen-opsawg-pcapng.xml&modeAsFormat=html/ascii&type=ascii) is 404\r\n* \"Currnet committed version as PDF\" and as Text equally are 404",
       "createdAt": "2020-12-21T20:53:16Z",
-      "updatedAt": "2020-12-21T21:48:10Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-21T22:07:37Z",
+      "closedAt": "2020-12-21T22:07:37Z",
       "comments": [
         {
           "author": "guyharris",
@@ -1628,6 +1656,13 @@
           "body": "Yes, I think @mcr is working on some changes so that HTML pages (or XML pages that we can shove through xml2rfc.tools.ietf.org) can be generated from the now-in-extended-Markdown source for the draft.  I think the pages will end up on [GitHub Pages](https://pages.github.com).",
           "createdAt": "2020-12-21T21:48:10Z",
           "updatedAt": "2020-12-21T21:48:10Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "okay, circleci magic invoked, and it should rebuild everything now.\r\nThe pcap (legacy) hasn't been reposted to the IETF datatracker yet, so the diff links won't work yet.\r\n",
+          "createdAt": "2020-12-21T22:07:37Z",
+          "updatedAt": "2020-12-21T22:07:37Z"
         }
       ]
     }
@@ -2631,7 +2666,7 @@
       "labels": [],
       "body": "Adds a Capture Information Block (CIB) with global location/orientation/velocity vectors. CIBs are associated with an IDB using the interface number. It is intended that this will be extended with other useful fields in the future.\r\n\r\nThis began in #48, which has now been split into two components. \r\n- The CIB (this PR) for appending information to a capture interface (that applies to all packets captured after the CIB, until the next CIB).\r\n- New EPB options (#56), for appending RSSI etc. to EPBs.\r\n\r\nThe proposal with changes is viewable [here](http://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi?url=https://raw.githubusercontent.com/ryankurte/pcapng/proposed-wireless-fields/draft-tuexen-opsawg-pcapng.xml&modeAsFormat=html/ascii#rfc.section.4.7) (thanks @guyharris!). \r\n\r\n*Please read the RFC or check out the diff for an up to date view of the changes*",
       "createdAt": "2018-06-14T22:33:16Z",
-      "updatedAt": "2019-10-29T05:45:54Z",
+      "updatedAt": "2020-12-21T23:05:29Z",
       "baseRepository": "pcapng/pcapng",
       "baseRefName": "master",
       "baseRefOid": "bf17d7fe42e9c2b4a695bf816cae27be4c9c978a",
@@ -2810,6 +2845,20 @@
           "body": "hey hey, are there any other things i can do to help get this merged?",
           "createdAt": "2019-10-29T05:45:54Z",
           "updatedAt": "2019-10-29T05:45:54Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> hey hey, are there any other things i can do to help get this merged?\r\n\r\nWell, step 1 would be to change it to update the Markdown file rather than the XML file; @mcr converted the spec to extended Markdown - it's at draft-tuexen-opsawg-pcapng.md now.  See [cabo/kramdown-rfc2629](https://github.com/cabo/kramdown-rfc2629) for the extensions.",
+          "createdAt": "2020-12-21T22:41:52Z",
+          "updatedAt": "2020-12-21T22:41:52Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I'm converting the pcap file now, but I think you are referring to a merge\nrequest against the pcapng.  yes, so it needs to get re-edited, sorry.\n\n",
+          "createdAt": "2020-12-21T23:05:29Z",
+          "updatedAt": "2020-12-21T23:05:29Z"
         }
       ],
       "reviews": [
@@ -3589,7 +3638,7 @@
       "labels": [],
       "body": "Following from #48, this PR is to add per-packet options for capture information to the EPB, alongside the per-interface options introduced in #51.\r\n\r\nThis PR is a work in progress and requires further discussion, opening now so there is a clear delineation between this and #51.\r\n\r\n**TODO:**\r\n- What RF options do we want?\r\n- How do we want to represent them?\r\n  - I am in favour of 32-bit IEEE-754 floats where sensible, rather than defining our own fixed-point approximations (and we have already accepted the inclusion of this for location information)\r\n\r\n**Options:**\r\n- [x] RSSI per antenna\r\n\r\nThe updated RFC can be viewed [here](http://xml2rfc.tools.ietf.org/cgi-bin/xml2rfc.cgi?url=https://raw.githubusercontent.com/ryankurte/pcapng/proposed-epb-options/draft-tuexen-opsawg-pcapng.xml&modeAsFormat=html/ascii#section_epb)\r\n\r\n*Please read the RFC or check out the diff for an up to date view of the changes*",
       "createdAt": "2019-01-05T22:07:10Z",
-      "updatedAt": "2019-02-12T18:21:52Z",
+      "updatedAt": "2020-12-21T22:49:16Z",
       "baseRepository": "pcapng/pcapng",
       "baseRefName": "master",
       "baseRefOid": "f25b23a97b5699ef12a81ddc84a0014cc4d0c4ed",
@@ -3649,6 +3698,13 @@
           "body": "It has become apparent that extrapolating the start of frame timestamp from the epb timestamp is not an accurate reference for computing relative times from the start of slot and end of frame timestamps.  The timestamps for comparison should all reference the same monotonically increasing clock.\r\nSo it is worth also including a Start of Frame timestamp in the same format as the End of Frame timestamp.\r\n",
           "createdAt": "2019-02-12T18:21:52Z",
           "updatedAt": "2019-02-12T18:21:52Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "This should probably be converted to a change to the extended Markdown version of the spec at [pcapng/draft-tuexen-opsawg-pcapng.md,](https://github.com/pcapng/pcapng/blob/master/draft-tuexen-opsawg-pcapng.md) as that's now the source for the spec.  See [cabo/kramdown-rfc2629](https://github.com/cabo/kramdown-rfc2629) for the extensions.",
+          "createdAt": "2020-12-21T22:49:16Z",
+          "updatedAt": "2020-12-21T22:49:16Z"
         }
       ],
       "reviews": []
@@ -5673,6 +5729,34 @@
       "mergedBy": "guyharris",
       "mergeCommit": {
         "oid": "22bebb865b28b9421b5761ae4190ecea88738f7b"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 99,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzOTcwMzIw",
+      "title": "Update draft-gharris-opsawg-pcap.md",
+      "url": "https://github.com/pcapng/pcapng/pull/99",
+      "state": "MERGED",
+      "author": "tuexen",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-12-22T08:50:18Z",
+      "updatedAt": "2020-12-22T09:03:27Z",
+      "baseRepository": "pcapng/pcapng",
+      "baseRefName": "master",
+      "baseRefOid": "8c6ea0870025b25eb9b3d8ca4e892ad153ae734e",
+      "headRepository": "tuexen/pcapng",
+      "headRefName": "cleanups",
+      "headRefOid": "be7c1a242ac6e23691b753c4694d574e1d760550",
+      "closedAt": "2020-12-22T09:03:27Z",
+      "mergedAt": "2020-12-22T09:03:27Z",
+      "mergedBy": "guyharris",
+      "mergeCommit": {
+        "oid": "af00891b80d9f11564617ce012922dc5d0181c64"
       },
       "comments": [],
       "reviews": []
