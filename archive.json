@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-22T09:04:24.443738+00:00",
+  "timestamp": "2020-12-23T01:03:01.603518+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -5745,7 +5745,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2020-12-22T08:50:18Z",
-      "updatedAt": "2020-12-22T09:03:27Z",
+      "updatedAt": "2020-12-22T09:13:14Z",
       "baseRepository": "pcapng/pcapng",
       "baseRefName": "master",
       "baseRefOid": "8c6ea0870025b25eb9b3d8ca4e892ad153ae734e",
@@ -5760,6 +5760,88 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 100,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQzOTg2MjI5",
+      "title": "Possible cleanup",
+      "url": "https://github.com/pcapng/pcapng/pull/100",
+      "state": "OPEN",
+      "author": "tuexen",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I think this makes the text clearer. But I'm not sure if it is a way to go.",
+      "createdAt": "2020-12-22T09:19:00Z",
+      "updatedAt": "2020-12-23T00:57:30Z",
+      "baseRepository": "pcapng/pcapng",
+      "baseRefName": "master",
+      "baseRefOid": "af00891b80d9f11564617ce012922dc5d0181c64",
+      "headRepository": "tuexen/pcapng",
+      "headRefName": "possible-cleanup",
+      "headRefOid": "e02edbfc5f7526885c44f9496cd45be46fdca04e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Guy Harris <notifications@github.com> wrote:\n    > Alternatively, we could do\n\n    > * values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\n    > * values from 32768 to 65000 are marked as First-Come First-Served;\n    > * values from 147 to 162, and from 65000 to 65535 are marked as Private Use.\n\nThis is much clearer. I'll use that.\n\n\n",
+          "createdAt": "2020-12-23T00:54:31Z",
+          "updatedAt": "2020-12-23T00:54:31Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Guy Harris <notifications@github.com> wrote:\n    >> @@ -295,6 +291,8 @@ DLT values are associated with specific operation system captures, and are opera\n    > |LINKTYPE_SCCP|142|SS7 Control Part, ITU-T Q.711/Q.712/Q.713/Q.714\n    > |LINKTYPE_DOCSIS|143|DOCSIS MAC frames, DOCSIS 3.1\n    > |LINKTYPE_LINUX_IRDA|144|Linux-IrDA packets w/LINKTYPE_LINUX_IRDA header\n    > +|LINKTYPE_PRIVATE_USE_1|147|For private use\n\n    > There aren't 2 private use values, there are 16 private use values, 147\n    > to 162, so they'd be `LINKTYPE_PRIVATE_USE_1` (`LINKTYPE_USER1`)\n    > through `LINKTYPE_PRIVATE_USE_16` (`LINKTYPE_USER16`).\n\nThe last revision does not list that entry at all.\nI felt that giving away ~500 at the end of the range should accomodate pretty\nmuch all sorts of experiments.\nIf we ever get close (at ~10/year it would be a long time), then the\n65535+PEN thing should work great.\nIn PCAPNG, we could also just have a new packet header.\n\n--\n]               Never tell me the odds!                 | ipv6 mesh networks [\n]   Michael Richardson, Sandelman Software Works        |    IoT architect   [\n]     mcr@sandelman.ca  http://www.sandelman.ca/        |   ruby on rails    [\n\n\n\n",
+          "createdAt": "2020-12-23T00:57:30Z",
+          "updatedAt": "2020-12-23T00:57:30Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3MzczODY4",
+          "commit": {
+            "abbreviatedOid": "e02edbf"
+          },
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-22T21:21:40Z",
+          "updatedAt": "2020-12-22T21:21:40Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I'd leave that in, because not *all* the values in that range are marked as Specification Required.\r\n\r\nPerhaps:\r\n\r\n* values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\r\n* values from 147 to 162 are marked as Private Use;\r\n* values from 32768 to 65000 are marked as First-Come First-Served;\r\n* values from 65000 to 65535 are marked as Private Use.\r\n\r\nAlternatively, we could do\r\n\r\n* values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\r\n* values from 32768 to 65000 are marked as First-Come First-Served;\r\n* values from 147 to 162, and from 65000 to 65535 are marked as Private Use.",
+              "createdAt": "2020-12-22T21:21:40Z",
+              "updatedAt": "2020-12-22T21:21:40Z"
+            }
+          ]
+        },
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTU3Mzc0NDMx",
+          "commit": {
+            "abbreviatedOid": "e02edbf"
+          },
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2020-12-22T21:22:52Z",
+          "updatedAt": "2020-12-22T21:22:52Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "There aren't 2 private use values, there are 16 private use values, 147 to 162, so they'd be `LINKTYPE_PRIVATE_USE_1` (`LINKTYPE_USER1`) through `LINKTYPE_PRIVATE_USE_16` (`LINKTYPE_USER16`).",
+              "createdAt": "2020-12-22T21:22:52Z",
+              "updatedAt": "2020-12-22T21:22:52Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
