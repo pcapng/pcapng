@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-23T01:03:01.603518+00:00",
+  "timestamp": "2020-12-23T22:49:40.937043+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -5766,24 +5766,26 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTQzOTg2MjI5",
       "title": "Possible cleanup",
       "url": "https://github.com/pcapng/pcapng/pull/100",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tuexen",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "I think this makes the text clearer. But I'm not sure if it is a way to go.",
       "createdAt": "2020-12-22T09:19:00Z",
-      "updatedAt": "2020-12-23T00:57:30Z",
+      "updatedAt": "2020-12-23T22:49:04Z",
       "baseRepository": "pcapng/pcapng",
       "baseRefName": "master",
-      "baseRefOid": "af00891b80d9f11564617ce012922dc5d0181c64",
+      "baseRefOid": "6870a6560b240dbfad7fd2a32c7f1f8fadf50ec7",
       "headRepository": "tuexen/pcapng",
       "headRefName": "possible-cleanup",
-      "headRefOid": "e02edbfc5f7526885c44f9496cd45be46fdca04e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "e6063b9f9bd3a846c426879b4b2f81cbd44d8569",
+      "closedAt": "2020-12-23T22:49:04Z",
+      "mergedAt": "2020-12-23T22:49:04Z",
+      "mergedBy": "mcr",
+      "mergeCommit": {
+        "oid": "1488e92d66e8a6572e0682b732fb33ecee14dfc1"
+      },
       "comments": [
         {
           "author": "mcr",
@@ -5798,6 +5800,76 @@
           "body": "Guy Harris <notifications@github.com> wrote:\n    >> @@ -295,6 +291,8 @@ DLT values are associated with specific operation system captures, and are opera\n    > |LINKTYPE_SCCP|142|SS7 Control Part, ITU-T Q.711/Q.712/Q.713/Q.714\n    > |LINKTYPE_DOCSIS|143|DOCSIS MAC frames, DOCSIS 3.1\n    > |LINKTYPE_LINUX_IRDA|144|Linux-IrDA packets w/LINKTYPE_LINUX_IRDA header\n    > +|LINKTYPE_PRIVATE_USE_1|147|For private use\n\n    > There aren't 2 private use values, there are 16 private use values, 147\n    > to 162, so they'd be `LINKTYPE_PRIVATE_USE_1` (`LINKTYPE_USER1`)\n    > through `LINKTYPE_PRIVATE_USE_16` (`LINKTYPE_USER16`).\n\nThe last revision does not list that entry at all.\nI felt that giving away ~500 at the end of the range should accomodate pretty\nmuch all sorts of experiments.\nIf we ever get close (at ~10/year it would be a long time), then the\n65535+PEN thing should work great.\nIn PCAPNG, we could also just have a new packet header.\n\n--\n]               Never tell me the odds!                 | ipv6 mesh networks [\n]   Michael Richardson, Sandelman Software Works        |    IoT architect   [\n]     mcr@sandelman.ca  http://www.sandelman.ca/        |   ruby on rails    [\n\n\n\n",
           "createdAt": "2020-12-23T00:57:30Z",
           "updatedAt": "2020-12-23T00:57:30Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> This is much clearer. I'll use that.\r\n\r\nOr\r\n\r\n- values from 0 to 146, and from 163 to 32767, are marked as Specification Required;\r\n- values from 32768 to 65000 are marked as First-Come First-Served;\r\n- values from 147 to 162, and from 65000 to 65535 are marked as Private Use.\r\n",
+          "createdAt": "2020-12-23T02:25:35Z",
+          "updatedAt": "2020-12-23T02:25:35Z"
+        },
+        {
+          "author": "tuexen",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> On 23. Dec 2020, at 01:54, Michael Richardson <notifications@github.com> wrote:\n> \n> \n> Guy Harris <notifications@github.com> wrote:\n> > Alternatively, we could do\n> \n> > * values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\n> > * values from 32768 to 65000 are marked as First-Come First-Served;\n> > * values from 147 to 162, and from 65000 to 65535 are marked as Private Use.\n> \n> This is much clearer. I'll use that.\nI would vote for just putting 147 to 162 in the initial allocation table and have only\nthe first two rules. That means that IANA has only to deal with two ranges.\n\nBest regards\nMichael\n> \n> \n> \u2014\n> You are receiving this because you authored the thread.\n> Reply to this email directly, view it on GitHub, or unsubscribe.\n> \n\n",
+          "createdAt": "2020-12-23T12:19:44Z",
+          "updatedAt": "2020-12-23T12:19:44Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "\nMichael T\u00fcxen <notifications@github.com> wrote:\n    >> Guy Harris <notifications@github.com> wrote:\n    >> > Alternatively, we could do\n    >>\n    >> > * values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\n    >> > * values from 32768 to 65000 are marked as First-Come First-Served;\n    >> > * values from 147 to 162, and from 65000 to 65535 are marked as Private Use.\n    >>\n    >> This is much clearer. I'll use that.\n    > I would vote for just putting 147 to 162 in the initial allocation table and have only\n    > the first two rules. That means that IANA has only to deal with two ranges.\n\nI don't have a strong opinion about table vs not, or the \"except...\" text.\nI wanted to list 147->162 this way so that people reading would see what\nchoices they have.\n\n--\n]               Never tell me the odds!                 | ipv6 mesh networks [\n]   Michael Richardson, Sandelman Software Works        |    IoT architect   [\n]     mcr@sandelman.ca  http://www.sandelman.ca/        |   ruby on rails    [\n\n",
+          "createdAt": "2020-12-23T13:26:17Z",
+          "updatedAt": "2020-12-23T13:26:17Z"
+        },
+        {
+          "author": "tuexen",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> On 23. Dec 2020, at 14:26, Michael Richardson <notifications@github.com> wrote:\n> \n> \n> \n> Michael T\u00fcxen <notifications@github.com> wrote:\n> >> Guy Harris <notifications@github.com> wrote:\n> >> > Alternatively, we could do\n> >>\n> >> > * values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\n> >> > * values from 32768 to 65000 are marked as First-Come First-Served;\n> >> > * values from 147 to 162, and from 65000 to 65535 are marked as Private Use.\n> >>\n> >> This is much clearer. I'll use that.\n> > I would vote for just putting 147 to 162 in the initial allocation table and have only\n> > the first two rules. That means that IANA has only to deal with two ranges.\n> \n> I don't have a strong opinion about table vs not, or the \"except...\" text.\n> I wanted to list 147->162 this way so that people reading would see what\n> choices they have.\nIf I would be a developer looking for a number I can take, I would scroll\nthrough header files to find something for private use. Maybe look at the\ntable available from IANA, but not in the IANA section.\n\nSo I would suggest:\n* add the entries to the table.\n* take them out of the IANA consoderations\n\nI you want to draw the attention to such values, put some text in the main\npart of the document, not only in the IANA section.\n\nIf you agree, I can update my pull request.\n\nBest regards\nMichael\n> \n> --\n> ] Never tell me the odds! | ipv6 mesh networks [\n> ] Michael Richardson, Sandelman Software Works | IoT architect [\n> ] mcr@sandelman.ca http://www.sandelman.ca/ | ruby on rails [\n> \n> \u2014\n> You are receiving this because you authored the thread.\n> Reply to this email directly, view it on GitHub, or unsubscribe.\n> \n\n",
+          "createdAt": "2020-12-23T14:34:40Z",
+          "updatedAt": "2020-12-23T14:34:40Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "\nMichael T\u00fcxen <notifications@github.com> wrote:\n    >> I don't have a strong opinion about table vs not, or the \"except...\" text.\n    >> I wanted to list 147->162 this way so that people reading would see what\n    >> choices they have.\n\n    > If I would be a developer looking for a number I can take, I would scroll\n    > through header files to find something for private use. Maybe look at the\n    > table available from IANA, but not in the IANA section.\n\n    > So I would suggest:\n    > * add the entries to the table.\n    > * take them out of the IANA consoderations\n\nokay, so the 147->162 are already listed in the header/source.\nThey are also in the tables on tcpdump.org, and I would expect them to be\nvisible in the IANA table...\n\n    > I you want to draw the attention to such values, put some text in the main\n    > part of the document, not only in the IANA section.\n\n    > If you agree, I can update my pull request.\n\nI think we already merged it, and further adapted.\nMore text welcome!\n\nI guess we also need some emails to the chairs.\n\n--\n]               Never tell me the odds!                 | ipv6 mesh networks [\n]   Michael Richardson, Sandelman Software Works        |    IoT architect   [\n]     mcr@sandelman.ca  http://www.sandelman.ca/        |   ruby on rails    [\n\n\n",
+          "createdAt": "2020-12-23T16:00:48Z",
+          "updatedAt": "2020-12-23T16:00:48Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Given that the link-layer types are used in both pcap and pcapng, should there be a third I-D that just lists the link-layer types, to which both the pcap and pcapng I-Ds refer?  A number of protocols aren't handled by a single RFC, they have multiple RFCs.",
+          "createdAt": "2020-12-23T19:47:39Z",
+          "updatedAt": "2020-12-23T19:47:39Z"
+        },
+        {
+          "author": "tuexen",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> On 23. Dec 2020, at 20:47, Guy Harris <notifications@github.com> wrote:\n> \n> \n> Given that the link-layer types are used in both pcap and pcapng, should there be a third I-D that just lists the link-layer types, to which both the pcap and pcapng I-Ds refer? A number of protocols aren't handled by a single RFC, they have multiple RFCs.\nI think it is a valid approach for the first document using some values to define\nthe corresponding registry.\n\nI like the approach of getting out the pcap spec first introducing the link layer\ntype registry and then having the pcapng spec using it and defining the registries\nfor the blocks and so on.\n\nBest regards\nMichael\n> \n> \u2014\n> You are receiving this because you authored the thread.\n> Reply to this email directly, view it on GitHub, or unsubscribe.\n> \n\n",
+          "createdAt": "2020-12-23T20:15:15Z",
+          "updatedAt": "2020-12-23T20:15:15Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "\nGuy Harris <notifications@github.com> wrote:\n    > Given that the link-layer types are used in both pcap and pcapng,\n    > should there be a third I-D that just lists the link-layer types, to\n    > which both the pcap and pcapng I-Ds refer?  A number of protocols\n    > aren't handled by a single RFC, they have multiple RFCs.\n\nyes, that's a reasonable refactor.... in a world where the IESG wasn't so\nheavy-weight and liked more documents rather than bigger documents that might make sense.\n\nI think that it will take a few months to get pcapng through.\nLook at the conversation in November in the \"lets adopt it\" thread from\nToerless and others who want to redo the entire thing.\nSo if we put it into pcapng, then pcap would just stall.\n\n--\n]               Never tell me the odds!                 | ipv6 mesh networks [\n]   Michael Richardson, Sandelman Software Works        |    IoT architect   [\n]     mcr@sandelman.ca  http://www.sandelman.ca/        |   ruby on rails    [\n\n",
+          "createdAt": "2020-12-23T20:26:40Z",
+          "updatedAt": "2020-12-23T20:26:40Z"
+        },
+        {
+          "author": "tuexen",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Guy Harris <notifications@github.com> wrote: Given that the link-layer types are used in both pcap and pcapng, should there be a third I-D that just lists the link-layer types, to which both the pcap and pcapng I-Ds refer? A number of protocols aren't handled by a single RFC, they have multiple RFCs. yes, that's a reasonable refactor.... in a world where the IESG wasn't so heavy-weight and liked more documents rather than bigger documents that might make sense. I think that it will take a few months to get pcapng through. Look at the conversation in November in the \"lets adopt it\" thread from Toerless and others who want to redo the entire thing. So if we put it into pcapng, then pcap would just stall.\r\n> [\u2026](#)\r\n\r\n\r\n\r\n> Guy Harris <notifications@github.com> wrote: Given that the link-layer types are used in both pcap and pcapng, should there be a third I-D that just lists the link-layer types, to which both the pcap and pcapng I-Ds refer? A number of protocols aren't handled by a single RFC, they have multiple RFCs. yes, that's a reasonable refactor.... in a world where the IESG wasn't so heavy-weight and liked more documents rather than bigger documents that might make sense. I think that it will take a few months to get pcapng through. Look at the conversation in November in the \"lets adopt it\" thread from Toerless and others who want to redo the entire thing. So if we put it into pcapng, then pcap would just stall.\r\n> [\u2026](#)\r\n\r\nI would suggest to finish the work on the pcap specification, which includes the IANA registry for the link layer types.\r\n\r\nWe should also decide first, which Registration Policy is the right one. Then deal with the IETF procedural issues. Let me ask the question: Do we really want Specification Required. I'm not sure if the current assignments really have specs. I would vote for expert review. Since there needs to be text to describe the expert review anyway (also for spec required), we could request some sort of description. I think this way it was handled in the past. Or am I wrong?",
+          "createdAt": "2020-12-23T21:52:40Z",
+          "updatedAt": "2020-12-23T21:53:26Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I would suggest to finish the work on the pcap specification, which includes the IANA registry for the link layer types.\r\n\r\nAgreed. \r\nMay I also suggest we do this on the opsawg list, because doing it there means getting more attention from the chairs :-)\r\n\r\n> We should also decide first, which Registration Policy is the right one. Then deal with the IETF procedural issues. Let me ask the  question: Do we really want Specification Required. I'm not sure if the current assignments really have specs. I would vote for expert review. Since there needs to be text to describe the expert review anyway (also for spec required), we could request some sort of description. I think this way it was handled in the past. Or am I wrong?\r\n\r\nHi, Specification Required actually implies Designated Experts (aka \"expert review\").\r\nSo, we have on the tcpdump-workers, essentially run things as expert review, and asked/begged for a Specification, but\r\nwe haven't insisted upon it.  So I'm trying to keep a similar policy.  Guy has mostly been that expert, with Dennis and I asking questions around the edges.  \r\nOften in github issues where someone does a pull request.  I think that we can probably adapt the IANA process into github Issues as in almost all cases we'll want to put it into libpcap as well.   \r\n\r\nIf we were to *DROP* Specification Required, then we could go via ISE.\r\nBut, I've had a bunch of back and forth with Adrian Farrel (the ISE), and he would like to see us exhaust all other avenues first.\r\nSo I would tentatively say we go until Jan.31 or so.\r\n\r\n\r\n",
+          "createdAt": "2020-12-23T22:48:17Z",
+          "updatedAt": "2020-12-23T22:48:17Z"
         }
       ],
       "reviews": [
@@ -5817,7 +5889,7 @@
               "originalPosition": 5,
               "body": "I'd leave that in, because not *all* the values in that range are marked as Specification Required.\r\n\r\nPerhaps:\r\n\r\n* values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\r\n* values from 147 to 162 are marked as Private Use;\r\n* values from 32768 to 65000 are marked as First-Come First-Served;\r\n* values from 65000 to 65535 are marked as Private Use.\r\n\r\nAlternatively, we could do\r\n\r\n* values from 0 to 32767, except for values from 147 to 162, are marked as Specification Required;\r\n* values from 32768 to 65000 are marked as First-Come First-Served;\r\n* values from 147 to 162, and from 65000 to 65535 are marked as Private Use.",
               "createdAt": "2020-12-22T21:21:40Z",
-              "updatedAt": "2020-12-22T21:21:40Z"
+              "updatedAt": "2020-12-23T21:23:02Z"
             }
           ]
         },
@@ -5837,7 +5909,7 @@
               "originalPosition": 16,
               "body": "There aren't 2 private use values, there are 16 private use values, 147 to 162, so they'd be `LINKTYPE_PRIVATE_USE_1` (`LINKTYPE_USER1`) through `LINKTYPE_PRIVATE_USE_16` (`LINKTYPE_USER16`).",
               "createdAt": "2020-12-22T21:22:52Z",
-              "updatedAt": "2020-12-22T21:22:52Z"
+              "updatedAt": "2020-12-23T21:23:02Z"
             }
           ]
         }
