@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-27T01:01:15.898999+00:00",
+  "timestamp": "2020-12-27T18:25:49.028138+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -1687,15 +1687,15 @@
       "id": "MDU6SXNzdWU3NzQ5NDY5MjU=",
       "title": "Current pcap draft doesn't include all the link types",
       "url": "https://github.com/pcapng/pcapng/issues/102",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "kayoub5",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "The current list of link types contains about 128 link types, unfortunately the list there is incomplete.\r\n* The link on [tcpdump website](https://www.tcpdump.org/linktypes.html) defines around 113 link types\r\n* [pcap-common.c](https://github.com/the-tcpdump-group/libpcap/blob/master/pcap-common.c) defines around 205 link types\r\n\r\nThe additional 90 or so link types already defined in `pcap-common.c` needs to be taken into consideration to prevent conflict.\r\n",
       "createdAt": "2020-12-26T23:17:04Z",
-      "updatedAt": "2020-12-27T00:06:46Z",
-      "closedAt": null,
+      "updatedAt": "2020-12-27T02:53:23Z",
+      "closedAt": "2020-12-27T02:53:23Z",
       "comments": [
         {
           "author": "guyharris",
@@ -1710,6 +1710,13 @@
           "body": "Sounds good.\r\n\r\nOne small detail, `DLT_MATCHING_MAX` will soon change due to https://github.com/the-tcpdump-group/libpcap/pull/934",
           "createdAt": "2020-12-27T00:06:46Z",
           "updatedAt": "2020-12-27T00:06:46Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "They should be there now.  Some ranges *are* marked as \"not to be used\".",
+          "createdAt": "2020-12-27T02:52:38Z",
+          "updatedAt": "2020-12-27T02:52:38Z"
         }
       ]
     }
@@ -5961,6 +5968,34 @@
           ]
         }
       ]
+    },
+    {
+      "number": 103,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTQ1ODE0MjMw",
+      "title": "Fix a typo",
+      "url": "https://github.com/pcapng/pcapng/pull/103",
+      "state": "MERGED",
+      "author": "fxlb",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2020-12-27T14:26:09Z",
+      "updatedAt": "2020-12-27T18:25:21Z",
+      "baseRepository": "pcapng/pcapng",
+      "baseRefName": "master",
+      "baseRefOid": "a589f9bcf3f786017b0732d35126f305ef91650d",
+      "headRepository": "fxlb/pcapng",
+      "headRefName": "master",
+      "headRefOid": "da66c47ef39ca121741be6f058202826f4126e55",
+      "closedAt": "2020-12-27T18:25:21Z",
+      "mergedAt": "2020-12-27T18:25:21Z",
+      "mergedBy": "guyharris",
+      "mergeCommit": {
+        "oid": "1572878d7f374e3b41d513d543dfa05b544f78a2"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
