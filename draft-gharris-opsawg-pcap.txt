@@ -598,8 +598,9 @@ Table of Contents
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_RESERVED_16                |  162   |For private use     |
    +-------------------------------------+--------+--------------------+
-   | LINKTYPE_IEEE802_11_AVS             |  163   |AVS monitor mode    |
-   |                                     |        |w/802.11 header     |
+   | LINKTYPE_IEEE802_11_AVS             |  163   |AVS header[AVS],    |
+   |                                     |        |followed by an      |
+   |                                     |        |802.11 header       |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_JUNIPER_MONITOR            |  164   |Reserved for Juniper|
    |                                     |        |Networks            |
@@ -1637,6 +1638,10 @@ Table of Contents
 
    [Radiotap] radiotap.org, "Radiotap Web site", n.d.,
               <http://www.radiotap.org/>.
+
+   [AVS]      Peachy, S., "Archived AVS specification", n.d.,
+              <http://web.archive.org/web/20040803232023/
+              http://www.shaftnet.org/~pizza/software/capturefrm.txt>.
 
 Authors' Addresses
 
