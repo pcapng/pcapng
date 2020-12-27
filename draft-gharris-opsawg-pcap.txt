@@ -498,8 +498,9 @@ Table of Contents
    | LINKTYPE_AURORA                     |  126   |Reserved for Xilinx |
    |                                     |        |Aurora link layer   |
    +-------------------------------------+--------+--------------------+
-   | LINKTYPE_IEEE802_11_RADIOTAP        |  127   |Radiotap - followed |
-   |                                     |        |by an 802.11 header |
+   | LINKTYPE_IEEE802_11_RADIOTAP        |  127   |Radiotap[Radiotap] -|
+   |                                     |        |followed by an      |
+   |                                     |        |802.11 header       |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_TZSP                       |  128   |Reserved for Tazmen |
    |                                     |        |Sniffer Protocol    |
@@ -1632,6 +1633,9 @@ Table of Contents
               Writing an IANA Considerations Section in RFCs", BCP 26,
               RFC 8126, DOI 10.17487/RFC8126, June 2017,
               <https://www.rfc-editor.org/info/rfc8126>.
+
+   [Radiotap] radiotap.org, "Radiotap Web site", n.d.,
+              <http://www.radiotap.org/>.
 
 Authors' Addresses
 
