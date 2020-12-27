@@ -5,8 +5,8 @@
 Network Working Group                                     G. Harris, Ed.
 Internet-Draft                                                          
 Intended status: Informational                             M. Richardson
-Expires: 29 June 2021                                          Sandelman
-                                                        26 December 2020
+Expires: 30 June 2021                                          Sandelman
+                                                        27 December 2020
 
 
                         PCAP Capture File Format
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 June 2021.
+   This Internet-Draft will expire on 30 June 2021.
 
 Copyright Notice
 
@@ -369,12 +369,22 @@ Table of Contents
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_ETHERNET                   |   1    |IEEE 802.3 Ethernet |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_EXP_ETHERNET               |   2    |Xerox experimental  |
+   |                                     |        |3Mb Ethernet        |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_AX25                       |   3    |AX.25 packet        |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_PRONET                     |   4    |Reserved for PRONET |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_CHAOS                      |   5    |Reserved for MIT    |
+   |                                     |        |CHAOSNET            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_IEEE802_5                  |   6    |IEEE 802.5 Token    |
    |                                     |        |Ring                |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_ARCNET_BSD                 |   7    |ARCNET Data Packets |
+   |                                     |        |with BSD            |
+   |                                     |        |encapsulation       |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_SLIP                       |   8    |SLIP, w/            |
    |                                     |        |LINKTYPE_SLIP       |
@@ -386,11 +396,21 @@ Table of Contents
    | LINKTYPE_FDDI                       |   10   |FDDI: per ANSI      |
    |                                     |        |INCITS 239-1994.    |
    +-------------------------------------+--------+--------------------+
+   | not to be used                      | 11-49  |Do not use these    |
+   |                                     |        |values              |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_PPP_HDLC                   |   50   |PPP in HDLC-like    |
    |                                     |        |framing, as per RFC |
    |                                     |        |1662                |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_PPP_ETHER                  |   51   |PPPoE; per RFC 2516 |
+   +-------------------------------------+--------+--------------------+
+   | not to be used                      | 52-98  |Do not use these    |
+   |                                     |        |values              |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_SYMANTEC_FIREWALL          |   99   |Reserved for        |
+   |                                     |        |Symantec Enterprise |
+   |                                     |        |Firewall            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_ATM_RFC1483                |  100   |RFC 1483 LLC/SNAP-  |
    |                                     |        |encapsulated ATM    |
@@ -398,6 +418,12 @@ Table of Contents
    | LINKTYPE_RAW                        |  101   |Raw IP; begins with |
    |                                     |        |an IPv4 or IPv6     |
    |                                     |        |header              |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_SLIP_BSDOS                 |  102   |Reserved for BSD/OS |
+   |                                     |        |SLIP BPF header     |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_PPP_BSDOS                  |  103   |Reserved for BSD/OS |
+   |                                     |        |PPP BPF header      |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_C_HDLC                     |  104   |Cisco PPP with HDLC |
    |                                     |        |framing, as per     |
@@ -407,11 +433,27 @@ Table of Contents
    | LINKTYPE_IEEE802_11                 |  105   |IEEE 802.11 wireless|
    |                                     |        |LAN.                |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_ATM_CLIP                   |  106   |ATM Classical IP,   |
+   |                                     |        |with no header      |
+   |                                     |        |preceding IP        |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_FRELAY                     |  107   |Frame Relay LAPF    |
    |                                     |        |frames              |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_LOOP                       |  108   |OpenBSD loopback    |
    |                                     |        |encapsulation       |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_ENC                        |  109   |Reserved for OpenBSD|
+   |                                     |        |IPSEC encapsulation |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_LANE8023                   |  110   |Reserved for ATM    |
+   |                                     |        |LANE + 802.3        |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_HIPPI                      |  111   |Reserved for NetBSD |
+   |                                     |        |HIPPI               |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_HDLC                       |  112   |Reserved for NetBSD |
+   |                                     |        |HDLC framing        |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_LINUX_SLL                  |  113   |Linux "cooked"      |
    |                                     |        |capture             |
@@ -419,11 +461,28 @@ Table of Contents
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_LTALK                      |  114   |Apple LocalTalk     |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_ECONET                     |  115   |Reserved for Acorn  |
+   |                                     |        |Econet              |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IPFILTER                   |  116   |Reserved for OpenBSD|
+   |                                     |        |ipfilter            |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_PFLOG                      |  117   |OpenBSD pflog;      |
    |                                     |        |"struct pfloghdr"   |
    |                                     |        |structure           |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_CISCO_IOS                  |  118   |Reserved for Cisco- |
+   |                                     |        |internal use        |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_IEEE802_11_PRISM           |  119   |Prism monitor mode  |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IEEE802_11_AIRONET         |  120   |Reserved for 802.11 |
+   |                                     |        |+ FreeFreeBSD       |
+   |                                     |        |Aironet radio       |
+   |                                     |        |metadata            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_HHDLC                      |  121   |Reserved for Siemens|
+   |                                     |        |HiPath HDLC         |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_IP_OVER_FC                 |  122   |RFC 2625 IP-over-   |
    |                                     |        |Fibre Channel       |
@@ -431,12 +490,47 @@ Table of Contents
    | LINKTYPE_SUNATM                     |  123   |ATM traffic, / per  |
    |                                     |        |SunATM devices      |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_RIO                        |  124   |Reserved for RapidIO|
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_PCI_EXP                    |  125   |Reserved for PCI    |
+   |                                     |        |Express             |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_AURORA                     |  126   |Reserved for Xilinx |
+   |                                     |        |Aurora link layer   |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_IEEE802_11_RADIOTAP        |  127   |Radiotap - followed |
    |                                     |        |by an 802.11 header |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_TZSP                       |  128   |Reserved for Tazmen |
+   |                                     |        |Sniffer Protocol    |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_ARCNET_LINUX               |  129   |ARCNET Data Packets,|
    |                                     |        |per RFC 1051 frames |
    |                                     |        |w/variations        |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_MLPPP              |  130   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_MLFR               |  131   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ES                 |  132   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_GGSN               |  133   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_MFR                |  134   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ATM2               |  135   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_SERVICES           |  136   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ATM1               |  137   |Reserved for Juniper|
+   |                                     |        |Networks            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_APPLE_IP_OVER_IEEE1394     |  138   |Apple IP-over-IEEE  |
    |                                     |        |1394 cooked header  |
@@ -462,6 +556,13 @@ Table of Contents
    |                                     |        |w/                  |
    |                                     |        |LINKTYPE_LINUX_IRDA |
    |                                     |        |header              |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IBM_SP                     |  145   |Reserved for IBM SP |
+   |                                     |        |switch              |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IBM_SN                     |  146   |Reserved for IBM    |
+   |                                     |        |Next Federation     |
+   |                                     |        |switch              |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_RESERVED_01                |  147   |For private use     |
    +-------------------------------------+--------+--------------------+
@@ -498,6 +599,9 @@ Table of Contents
    | LINKTYPE_IEEE802_11_AVS             |  163   |AVS monitor mode    |
    |                                     |        |w/802.11 header     |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_MONITOR            |  164   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_BACNET_MS_TP               |  165   |BACnet MS/TP frames,|
    |                                     |        |per 9.3 MS/TP Frame |
    |                                     |        |Format ANSI 135     |
@@ -506,6 +610,12 @@ Table of Contents
    |                                     |        |encapsulation, like |
    |                                     |        |LINKTYPE_PPP_HDLC,  |
    |                                     |        |different stuffing  |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_PPPOE              |  167   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_PPPOE_ATM          |  168   |Reserved for Juniper|
+   |                                     |        |Networks            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_GPRS_LLC                   |  169   |General Packet Radio|
    |                                     |        |Service Logical Link|
@@ -525,6 +635,25 @@ Table of Contents
    |                                     |        |ITU-T Recommendation|
    |                                     |        |G.7041/Y.1303       |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_GCOM_T1E1                  |  172   |Reserved for Gcom   |
+   |                                     |        |T1/E1 line          |
+   |                                     |        |monitoring equipment|
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_GCOM_SERIAL                |  173   |Reserved for Gcom   |
+   |                                     |        |T1/E1 line          |
+   |                                     |        |monitoring equipment|
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_PIC_PEER           |  174   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_ERF_ETH                    |  175   |Endace ERF header   |
+   |                                     |        |followed by 802.3   |
+   |                                     |        |Ethernet            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_ERF_POS                    |  176   |Endace ERF header   |
+   |                                     |        |followed by Packet- |
+   |                                     |        |over-SONET          |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_LINUX_LAPD                 |  177   |Link Access         |
    |                                     |        |Procedures on the D |
    |                                     |        |Channel (LAPD)      |
@@ -541,6 +670,18 @@ Table of Contents
    |                                     |        |starting with the   |
    |                                     |        |address field.      |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ETHER              |  178   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_PPP                |  179   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_FRELAY             |  180   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_CHDLC              |  181   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_MFR                        |  182   |FRF.16.1 Multi-Link |
    |                                     |        |Frame Relay frames, |
    |                                     |        |beginning with an   |
@@ -548,6 +689,18 @@ Table of Contents
    |                                     |        |fragmentation format|
    |                                     |        |fragmentation       |
    |                                     |        |header.             |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_VP                 |  182   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_A653_ICM                   |  185   |Reserved for Arinc  |
+   |                                     |        |653 Interpartition  |
+   |                                     |        |Communication       |
+   |                                     |        |messages            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_USB_FREEBSD                |  186   |USB packets,        |
+   |                                     |        |beginning with a    |
+   |                                     |        |FreeBSD USB header  |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_BLUETOOTH_HCI_H4           |  187   |Bluetooth HCI UART  |
    |                                     |        |transport layer; the|
@@ -570,6 +723,10 @@ Table of Contents
    |                                     |        |portion of the most |
    |                                     |        |recent Bluetooth    |
    |                                     |        |Core Specification. |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IEEE802_16_MAC_CPS         |  188   |Reserved for IEEE   |
+   |                                     |        |802.16 MAC Common   |
+   |                                     |        |Part Sublayer       |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_USB_LINUX                  |  189   |USB packets,        |
    |                                     |        |beginning with a    |
@@ -609,6 +766,16 @@ Table of Contents
    |                                     |        |Section Header      |
    |                                     |        |Block.              |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_CAN20B                     |  190   |Reserved for        |
+   |                                     |        |Controller Area     |
+   |                                     |        |Network (CAN) v.    |
+   |                                     |        |2.0B packets        |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IEEE802_15_4_LINUX         |  191   |IEEE 802.15.4, with |
+   |                                     |        |address fields      |
+   |                                     |        |padded, as is done  |
+   |                                     |        |by Linux drivers    |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_PPI                        |  192   |Per-Packet          |
    |                                     |        |Information         |
    |                                     |        |information, as     |
@@ -621,6 +788,14 @@ Table of Contents
    |                                     |        |value specified by  |
    |                                     |        |the pph_dlt field of|
    |                                     |        |that header.        |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IEEE802_16_MAC_CPS_RADIO   |  193   |Reserved for 802.16 |
+   |                                     |        |MAC Common Part     |
+   |                                     |        |Sublayer plus radio |
+   |                                     |        |header              |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ISM                |  194   |Reserved for Juniper|
+   |                                     |        |Networks            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_IEEE802_15_4_WITHFCS       |  195   |IEEE 802.15.4 Low-  |
    |                                     |        |Rate Wireless       |
@@ -640,6 +815,18 @@ Table of Contents
    |                                     |        |Endace DAG cards;   |
    |                                     |        |encapsulates Endace |
    |                                     |        |ERF records.        |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_RAIF1                      |  198   |Reserved for        |
+   |                                     |        |Ethernet packets    |
+   |                                     |        |captured from a u10 |
+   |                                     |        |Networks board      |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_IPMB_KONTRON               |  199   |Reserved for IPMB   |
+   |                                     |        |packet for IPMI,    |
+   |                                     |        |with a 2-byte header|
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ST                 |  200   |Reserved for Juniper|
+   |                                     |        |Networks            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_BLUETOOTH_HCI_H4_WITH_PHDR |  201   |Bluetooth HCI UART  |
    |                                     |        |transport layer; the|
@@ -762,10 +949,32 @@ Table of Contents
    |                                     |        |meaning sent by this|
    |                                     |        |host (DTE->DCE).    |
    +-------------------------------------+--------+--------------------+
+   | Reserved                            |  208   |Reserved for an     |
+   |                                     |        |unspecified link-   |
+   |                                     |        |layer type          |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_IPMB_LINUX                 |  209   |IPMB over an I2C    |
    |                                     |        |circuit, with a     |
    |                                     |        |Linux-specific      |
    |                                     |        |pseudo-header       |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_FLEXRAY                    |  210   |Reserved for FlexRay|
+   |                                     |        |automotive bus      |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_MOST                       |  211   |Reserved for Media  |
+   |                                     |        |Oriented Systems    |
+   |                                     |        |Transport (MOST) bus|
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_LIN                        |  212   |Reserved for Local  |
+   |                                     |        |Interconnect Network|
+   |                                     |        |(LIN) bus for       |
+   |                                     |        |vehicle networks    |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_X2E_SERIAL                 |  213   |Reserved for X2E    |
+   |                                     |        |serial line captures|
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_X2E_XORAYA                 |  214   |Reserved for X2E    |
+   |                                     |        |Xoraya data loggers |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_IEEE802_15_4_NONASK_PHY    |  215   |IEEE 802.15.4 Low-  |
    |                                     |        |Rate Wireless       |
@@ -786,6 +995,21 @@ Table of Contents
    |                                     |        |layer data (starting|
    |                                     |        |with the frame      |
    |                                     |        |control field).     |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_LINUX_EVDEV                |  216   |Reserved for Linux  |
+   |                                     |        |evdev messages      |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_GSMTAP_UM                  |  217   |Reserved for GSM Um |
+   |                                     |        |interface, with     |
+   |                                     |        |gsmtap header       |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_GSMTAP_ABIS                |  218   |Reserved for GSM    |
+   |                                     |        |Abis interface, with|
+   |                                     |        |gsmtap header       |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_MPLS                       |  219   |MPLS packets with   |
+   |                                     |        |MPLS label as the   |
+   |                                     |        |header              |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_USB_LINUX_MMAPPED          |  220   |USB packets,        |
    |                                     |        |beginning with a    |
@@ -830,6 +1054,19 @@ Table of Contents
    |                                     |        |isochronous         |
    |                                     |        |descriptors that    |
    |                                     |        |follow.             |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_DECT                       |  221   |Reserved for DECT   |
+   |                                     |        |packets, with a     |
+   |                                     |        |pseudo-header       |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_AOS                        |  222   |Reserved for OS     |
+   |                                     |        |Space Data Link     |
+   |                                     |        |Protocol            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_WIHART                     |  223   |Reserved for        |
+   |                                     |        |Wireless HART       |
+   |                                     |        |(Highway Addressable|
+   |                                     |        |Remote Transducer)  |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_FC_2                       |  224   |Fibre Channel FC-2  |
    |                                     |        |frames, beginning   |
@@ -895,6 +1132,15 @@ Table of Contents
    |                                     |        |handshake before the|
    |                                     |        |message sequence.   |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_VS                 |  232   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_SRX_E2E            |  233   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_FIBRECHANNEL       |  234   |Reserved for Juniper|
+   |                                     |        |Networks            |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_DVB_CI                     |  235   |DVB-CI (DVB Common  |
    |                                     |        |Interface for       |
    |                                     |        |communication       |
@@ -928,6 +1174,9 @@ Table of Contents
    |                                     |        |although newer      |
    |                                     |        |versions are        |
    |                                     |        |classified.         |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_JUNIPER_ATM_CEMIC          |  238   |Reserved for Juniper|
+   |                                     |        |Networks            |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_NFLOG                      |  239   |Linux netlink       |
    |                                     |        |NETLINK NFLOG socket|
@@ -1004,6 +1253,9 @@ Table of Contents
    |                                     |        |specified by        |
    |                                     |        |NFCForum-TS-LLCP_1.1|
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_PFSYNC                     |  246   |Reserved for pfsync |
+   |                                     |        |output              |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_INFINIBAND                 |  247   |Raw InfiniBand      |
    |                                     |        |frames, starting    |
    |                                     |        |with the Local      |
@@ -1051,6 +1303,9 @@ Table of Contents
    |                                     |        |page 2200), but     |
    |                                     |        |without the         |
    |                                     |        |Preamble.           |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_WIRESHARK_UPPER_PDU        |  252   |Reserved for        |
+   |                                     |        |Wireshark           |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_NETLINK                    |  253   |Linux Netlink       |
    |                                     |        |capture             |
@@ -1161,6 +1416,9 @@ Table of Contents
    |                                     |        |Darwin (macOS, etc.)|
    |                                     |        |USB header          |
    +-------------------------------------+--------+--------------------+
+   | LINKTYPE_OPENFLOW                   |  267   |Reserved for OpenBSD|
+   |                                     |        |DLT_OPENFLOW        |
+   +-------------------------------------+--------+--------------------+
    | LINKTYPE_SDLC                       |  268   |SDLC packets, as    |
    |                                     |        |specified by Chapter|
    |                                     |        |1, DLC Links,       |
@@ -1178,6 +1436,10 @@ Table of Contents
    |                                     |        |SNA path information|
    |                                     |        |units (PIUs) as the |
    |                                     |        |payload.            |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_TI_LLN_SNIFFER             |  269   |Reserved for Texas  |
+   |                                     |        |Instruments protocol|
+   |                                     |        |sniffer             |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_LORATAP                    |  270   |LoRaTap pseudo-     |
    |                                     |        |header , followed by|
@@ -1225,6 +1487,9 @@ Table of Contents
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_LINUX_SLL2                 |  276   |Linux cooked capture|
    |                                     |        |encapsulation v2    |
+   +-------------------------------------+--------+--------------------+
+   | LINKTYPE_SERCOS_MONITOR             |  277   |Reserved for Sercos |
+   |                                     |        |Monitor             |
    +-------------------------------------+--------+--------------------+
    | LINKTYPE_OPENVIZSLA                 |  278   |Openvizsla FPGA-    |
    |                                     |        |based USB sniffer   |
