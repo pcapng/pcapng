@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-23T22:49:40.937043+00:00",
+  "timestamp": "2020-12-27T01:01:15.898999+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -1663,6 +1663,53 @@
           "body": "okay, circleci magic invoked, and it should rebuild everything now.\r\nThe pcap (legacy) hasn't been reposted to the IETF datatracker yet, so the diff links won't work yet.\r\n",
           "createdAt": "2020-12-21T22:07:37Z",
           "updatedAt": "2020-12-21T22:07:37Z"
+        }
+      ]
+    },
+    {
+      "number": 101,
+      "id": "MDU6SXNzdWU3NzQ5NDQxODA=",
+      "title": "Current pcap draft doesn't include the link-type descriptions from https://www.tcpdump.org/linktypes/",
+      "url": "https://github.com/pcapng/pcapng/issues/101",
+      "state": "OPEN",
+      "author": "guyharris",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Some link-layer header types have descriptions that point to pages not hosted on www.tcpdump.org, e.g. the IEEE 802 specifications.  We can (and should) link to those in the table without problems.\r\n\r\nOthers have link-type descriptions that are currently hosted on www.tcpdump.org at https://www.tcpdump.org/linktypes/.  We can either 1) continue to provide them, and link to them, or 2) turn them into appendices of the specification and refer to them internally.",
+      "createdAt": "2020-12-26T22:48:15Z",
+      "updatedAt": "2020-12-26T22:48:15Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 102,
+      "id": "MDU6SXNzdWU3NzQ5NDY5MjU=",
+      "title": "Current pcap draft doesn't include all the link types",
+      "url": "https://github.com/pcapng/pcapng/issues/102",
+      "state": "OPEN",
+      "author": "kayoub5",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current list of link types contains about 128 link types, unfortunately the list there is incomplete.\r\n* The link on [tcpdump website](https://www.tcpdump.org/linktypes.html) defines around 113 link types\r\n* [pcap-common.c](https://github.com/the-tcpdump-group/libpcap/blob/master/pcap-common.c) defines around 205 link types\r\n\r\nThe additional 90 or so link types already defined in `pcap-common.c` needs to be taken into consideration to prevent conflict.\r\n",
+      "createdAt": "2020-12-26T23:17:04Z",
+      "updatedAt": "2020-12-27T00:06:46Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> The additional 90 or so link types already defined in pcap-common.c needs to be taken into consideration to prevent conflict.\r\n\r\nValues in the range `DLT_MATCHING_MIN` to `DLT_MATCHING_MAX`, from `pcap/dlt.h`, are not available for assignment.\r\n\r\nWe can add \"reserved for\" entries for the ones that don't have specifications.",
+          "createdAt": "2020-12-26T23:35:54Z",
+          "updatedAt": "2020-12-26T23:35:54Z"
+        },
+        {
+          "author": "kayoub5",
+          "authorAssociation": "NONE",
+          "body": "Sounds good.\r\n\r\nOne small detail, `DLT_MATCHING_MAX` will soon change due to https://github.com/the-tcpdump-group/libpcap/pull/934",
+          "createdAt": "2020-12-27T00:06:46Z",
+          "updatedAt": "2020-12-27T00:06:46Z"
         }
       ]
     }
