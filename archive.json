@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-27T18:25:49.028138+00:00",
+  "timestamp": "2020-12-29T01:01:26.798326+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -1694,7 +1694,7 @@
       "labels": [],
       "body": "The current list of link types contains about 128 link types, unfortunately the list there is incomplete.\r\n* The link on [tcpdump website](https://www.tcpdump.org/linktypes.html) defines around 113 link types\r\n* [pcap-common.c](https://github.com/the-tcpdump-group/libpcap/blob/master/pcap-common.c) defines around 205 link types\r\n\r\nThe additional 90 or so link types already defined in `pcap-common.c` needs to be taken into consideration to prevent conflict.\r\n",
       "createdAt": "2020-12-26T23:17:04Z",
-      "updatedAt": "2020-12-27T02:53:23Z",
+      "updatedAt": "2020-12-27T22:55:22Z",
       "closedAt": "2020-12-27T02:53:23Z",
       "comments": [
         {
@@ -1717,6 +1717,13 @@
           "body": "They should be there now.  Some ranges *are* marked as \"not to be used\".",
           "createdAt": "2020-12-27T02:52:38Z",
           "updatedAt": "2020-12-27T02:52:38Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "So, please don't stress about getting everything perfect.\nWe have to get the document adopted (or sponsored), and then have a\nconversation with IANA about how to transfer this large table.\n(They may prefer another format)\nNot that good data isn't better than bad data, I'm just saying: let's get the\nformat right.\n\n",
+          "createdAt": "2020-12-27T22:55:22Z",
+          "updatedAt": "2020-12-27T22:55:22Z"
         }
       ]
     }
